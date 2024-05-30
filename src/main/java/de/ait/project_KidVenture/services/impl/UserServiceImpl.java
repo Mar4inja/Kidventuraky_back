@@ -21,7 +21,11 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
         user.setId(null);
 
-        if (user.getName() == null || user.getAge() == null || user.getEmail() == null || user.getRegistrationDate() == null) {
+        if (user.getName() == null || user.getName().isEmpty()
+                || user.getAge() == null
+                || user.getEmail() == null
+                || user.getEmail().isEmpty()
+                || user.getRegistrationDate() == null) {
             throw new IllegalArgumentException("All fields are required");
         }
         if (userRepository.findByEmail(user.getEmail()) != null) {
@@ -31,6 +35,7 @@ public class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(user);
         return savedUser;
     }
+
 
     @Override
     public List<User> getAll() {
