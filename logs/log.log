@@ -5370,3 +5370,6 @@ java.lang.NoSuchFieldException: User is not found
 2024-05-30T22:20:53.251+02:00  WARN 23916 --- [project_KidVenture] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-05-30T22:20:53.561+02:00  INFO 23916 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2024-05-30T22:20:53.567+02:00  INFO 23916 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Started ProjectKidIfYApplication in 3.528 seconds (process running for 3.923)
+2024-05-30T22:26:19.929+02:00  INFO 23916 --- [project_KidVenture] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T22:26:19.930+02:00  INFO 23916 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T22:26:19.936+02:00  INFO 23916 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
