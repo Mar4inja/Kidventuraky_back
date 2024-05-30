@@ -7,9 +7,9 @@
     <changeSet id="add_foreign_key_to_user_progress" author="martins">
         <addForeignKeyConstraint
                 baseTableName="user_progress"
-                baseColumnNames="kid_id"
+                baseColumnNames="user_id"
                 constraintName="fk_user_progress_kid"
-                referencedTableName="kid"
+                referencedTableName="user"
                 referencedColumnNames="id"/>
         <addForeignKeyConstraint
                 baseTableName="user_progress"

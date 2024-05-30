@@ -10,7 +10,7 @@
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="kid_id" type="BIGINT">
+            <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="task_id" type="BIGINT">

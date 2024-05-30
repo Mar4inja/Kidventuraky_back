@@ -24,8 +24,8 @@ public class Leaderboard {
     private Task task;
 
     @ManyToOne
-    @JoinColumn(name = "kid_id")
-    private Kid kid;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "rank")
     private int rank;

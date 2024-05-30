@@ -10,8 +10,8 @@
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <!-- Foreign key reference to 'kid' table -->
-            <column name="kid_id" type="BIGINT">
+            <!-- Foreign key reference to 'user' table -->
+            <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <!-- Foreign key reference to 'task' table -->

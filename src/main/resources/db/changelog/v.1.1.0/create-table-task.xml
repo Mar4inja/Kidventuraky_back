@@ -16,13 +16,13 @@
             <column name="task_description" type="TEXT">
                 <constraints nullable="false"/>
             </column>
-            <column name="difficultyLevel" type="VARCHAR(255)">
+            <column name="difficulty_level" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="taskType" type="VARCHAR(255)">
+            <column name="task_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="correctAnswer" type="VARCHAR(255)">
+            <column name="correct_answer" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

@@ -13,9 +13,9 @@
                 referencedColumnNames="id"/>
         <addForeignKeyConstraint
                 baseTableName="leaderboard"
-                baseColumnNames="kid_id"
+                baseColumnNames="user_id"
                 constraintName="fk_leaderboard_kid"
-                referencedTableName="kid"
+                referencedTableName="user"
                 referencedColumnNames="id"/>
     </changeSet>
 

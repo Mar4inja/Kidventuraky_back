@@ -22,8 +22,8 @@ public class GameSession {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "kid_id")
-    private Kid kid;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "task_id")

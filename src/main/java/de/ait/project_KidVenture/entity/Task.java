@@ -25,12 +25,12 @@ public class Task {
     @Column(name = "task_description")
     private String taskDescription;
 
-    @Column(name = "difficultyLevel")
+    @Column(name = "difficulty_level")
     private String difficultyLevel;
 
-    @Column(name = "taskType")
+    @Column(name = "task_type")
     private String taskType;
 
-    @Column(name = "correctAnswer")
+    @Column(name = "correct_answer")
     private String correctAnswer;
 }

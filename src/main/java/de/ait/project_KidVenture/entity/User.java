@@ -10,12 +10,12 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "kid")
+@Table(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Kid {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,9 @@ public class Kid {
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "password", nullable = false, unique = true)
+    private String password;
 
     @Column(name = "registration_date", nullable = false)
     private LocalDate registrationDate;

@@ -8,6 +8,7 @@
         <tagDatabase tag="v.1.1.0"/>
     </changeSet>
 
-    <include file="add_password_column_to_user.xml" relativeToChangelogFile="true"/>
+    <include file="add-users.xml" relativeToChangelogFile="true"/>
+
 
 </databaseChangeLog>

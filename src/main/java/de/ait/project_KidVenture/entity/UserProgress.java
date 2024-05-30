@@ -20,8 +20,8 @@ public class UserProgress {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "kid_id", nullable = false)
-    private Kid kid;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "task_id", nullable = false)

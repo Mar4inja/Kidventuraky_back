@@ -22,7 +22,7 @@ public class Achievement {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "achievementDescription")
+    @Column(name = "achievement_description")
     private String achievementDescription;
 
     @Column(name = "criteria")

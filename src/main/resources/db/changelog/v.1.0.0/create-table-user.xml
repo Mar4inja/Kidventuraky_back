@@ -3,9 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="create_table_kid" author="martins">
-        <!-- Create the 'kid' table -->
-        <createTable tableName="kid">
+    <changeSet id="create_table_user" author="martins">
+        <!-- Create the 'user' table -->
+        <createTable tableName="user">
             <!-- Define columns -->
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
