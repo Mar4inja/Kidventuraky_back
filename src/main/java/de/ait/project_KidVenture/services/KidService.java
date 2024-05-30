@@ -1,6 +1,7 @@
 package de.ait.project_KidVenture.services;
 
 import de.ait.project_KidVenture.entity.Kid;
+import de.ait.project_KidVenture.exceptions.UserIsNotExistException;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface KidService {
 
     Kid update(Kid updatetedKid);
 
-    Kid delete(Long id);
+    void delete(Long id);
 }

@@ -4,6 +4,19 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
+    <changeSet id="add_kids" author="martins">
+        <insert tableName="kid">
+            <column name="name" value="Mike"/>
+            <column name="age" valueNumeric="10"/>
+            <column name="email" value="mike.calvin@mail.com"/>
+            <column name="registration_date" value="2024-02-15"/>
+        </insert>
 
-
+        <insert tableName="kid">
+            <column name="name" value="Sam"/>
+            <column name="age" valueNumeric="12"/>
+            <column name="email" value="sam.hill@mail.com"/>
+            <column name="registration_date" value="2024-05-30"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

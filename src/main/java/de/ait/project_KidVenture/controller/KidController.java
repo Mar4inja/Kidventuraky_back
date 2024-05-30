@@ -4,11 +4,10 @@ import de.ait.project_KidVenture.entity.Kid;
 import de.ait.project_KidVenture.services.KidService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +25,12 @@ public class KidController {
     public ResponseEntity<List<Kid>> getAll() {
         List<Kid> kidsList = kidService.getAll();
         return ResponseEntity.ok(kidsList);
+    }
+
+    @Operation(summary = "Delete by ID")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Kid> deleteById(@PathVariable Long id) {
+        kidService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

@@ -22,16 +22,15 @@ public class Kid {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "age")
-    private String age;
+    @Column(name = "age", nullable = false)
+    private Integer age;
 
-
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "registrationDate")
+    @Column(name = "registration_date", nullable = false)
     private LocalDate registrationDate;
 }

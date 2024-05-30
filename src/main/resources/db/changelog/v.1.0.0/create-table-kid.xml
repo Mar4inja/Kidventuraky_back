@@ -7,7 +7,7 @@
         <!-- Create the 'kid' table -->
         <createTable tableName="kid">
             <!-- Define columns -->
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)">
@@ -19,7 +19,7 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="registrationDate" type="DATE">
+            <column name="registration_date" type="DATE">
                 <constraints nullable="false"/>
             </column>
         </createTable>
