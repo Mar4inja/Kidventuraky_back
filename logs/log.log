@@ -1,0 +1,1327 @@
+2024-05-30T12:17:56.158+02:00  INFO 1896 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 1896 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T12:17:56.160+02:00  INFO 1896 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T12:17:56.704+02:00  INFO 1896 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T12:17:56.753+02:00  INFO 1896 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 7 JPA repository interfaces.
+2024-05-30T12:17:57.103+02:00  INFO 1896 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T12:17:57.110+02:00  INFO 1896 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T12:17:57.110+02:00  INFO 1896 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T12:17:57.152+02:00  INFO 1896 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T12:17:57.153+02:00  INFO 1896 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 955 ms
+2024-05-30T12:17:57.249+02:00  INFO 1896 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T12:17:57.443+02:00  INFO 1896 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@64dfb31d
+2024-05-30T12:17:57.444+02:00  INFO 1896 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T12:17:57.863+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : Creating database history table with name: project_KidVenture.databasechangelog
+2024-05-30T12:17:57.936+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T12:17:58.016+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-05-30T12:17:58.018+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.command                        : Using deploymentId: 7064278017
+2024-05-30T12:17:58.019+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T12:17:58.042+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins
+2024-05-30T12:17:58.044+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.0.0' applied to database
+2024-05-30T12:17:58.045+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins ran successfully in 2ms
+2024-05-30T12:17:58.050+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins
+2024-05-30T12:17:58.058+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.changelog                      : Table achievement created
+2024-05-30T12:17:58.070+02:00 ERROR 1896 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins encountered an exception.
+
+liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T12:17:58.079+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T12:17:58.080+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : Run:                          1
+2024-05-30T12:17:58.080+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : Previously run:               0
+2024-05-30T12:17:58.080+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T12:17:58.080+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T12:17:58.080+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:            1
+2024-05-30T12:17:58.081+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T12:17:58.083+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.command                        : Update command encountered an exception.
+2024-05-30T12:17:58.086+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.command                        : Logging exception.
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Details
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Class:  SQLException
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Cannot add foreign key constraint
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Source:  MySQL 5.7.44-log
+2024-05-30T12:17:58.089+02:00  INFO 1896 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T12:17:58.092+02:00  WARN 1896 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+2024-05-30T12:17:58.093+02:00  INFO 1896 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T12:17:58.099+02:00  INFO 1896 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T12:17:58.102+02:00  INFO 1896 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T12:17:58.111+02:00  INFO 1896 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T12:17:58.123+02:00 ERROR 1896 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T12:44:46.717+02:00  INFO 18816 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 18816 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T12:44:46.719+02:00  INFO 18816 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T12:44:47.243+02:00  INFO 18816 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T12:44:47.289+02:00  INFO 18816 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
+2024-05-30T12:44:47.645+02:00  INFO 18816 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T12:44:47.652+02:00  INFO 18816 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T12:44:47.652+02:00  INFO 18816 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T12:44:47.702+02:00  INFO 18816 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T12:44:47.702+02:00  INFO 18816 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 955 ms
+2024-05-30T12:44:47.798+02:00  INFO 18816 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T12:44:48.002+02:00  INFO 18816 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35dcd032
+2024-05-30T12:44:48.003+02:00  INFO 18816 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T12:44:48.363+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : Creating database history table with name: project_KidVenture.databasechangelog
+2024-05-30T12:44:48.425+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T12:44:48.489+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-05-30T12:44:48.490+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.command                        : Using deploymentId: 7065888490
+2024-05-30T12:44:48.492+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T12:44:48.514+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins
+2024-05-30T12:44:48.517+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.0.0' applied to database
+2024-05-30T12:44:48.517+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins ran successfully in 2ms
+2024-05-30T12:44:48.521+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins
+2024-05-30T12:44:48.528+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.changelog                      : Table achievement created
+2024-05-30T12:44:48.536+02:00 ERROR 18816 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins encountered an exception.
+
+liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : Run:                          1
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : Previously run:               0
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T12:44:48.544+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:            1
+2024-05-30T12:44:48.545+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T12:44:48.546+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.command                        : Update command encountered an exception.
+2024-05-30T12:44:48.549+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.command                        : Logging exception.
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Details
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Class:  SQLException
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Cannot add foreign key constraint
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Source:  MySQL 5.7.44-log
+2024-05-30T12:44:48.550+02:00  INFO 18816 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T12:44:48.552+02:00  WARN 18816 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+2024-05-30T12:44:48.553+02:00  INFO 18816 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T12:44:48.558+02:00  INFO 18816 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T12:44:48.559+02:00  INFO 18816 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T12:44:48.567+02:00  INFO 18816 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T12:44:48.578+02:00 ERROR 18816 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins:
+     Reason: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Cannot add foreign key constraint [Failed SQL: (1215) ALTER TABLE project_KidVenture.achievement ADD CONSTRAINT fk_achievement_reward FOREIGN KEY (reward_id) REFERENCES project_KidVenture.reward (id)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: java.sql.SQLException: Cannot add foreign key constraint
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T13:06:53.860+02:00  INFO 12868 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 12868 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T13:06:53.861+02:00  INFO 12868 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T13:06:54.413+02:00  INFO 12868 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T13:06:54.467+02:00  INFO 12868 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 7 JPA repository interfaces.
+2024-05-30T13:06:54.821+02:00  INFO 12868 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T13:06:54.829+02:00  INFO 12868 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T13:06:54.830+02:00  INFO 12868 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T13:06:54.874+02:00  INFO 12868 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T13:06:54.874+02:00  INFO 12868 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 980 ms
+2024-05-30T13:06:54.972+02:00  INFO 12868 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T13:06:55.168+02:00  INFO 12868 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3375b118
+2024-05-30T13:06:55.170+02:00  INFO 12868 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T13:06:55.565+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Creating database history table with name: project_KidVenture.databasechangelog
+2024-05-30T13:06:55.635+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:06:55.716+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-05-30T13:06:55.717+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.command                        : Using deploymentId: 7067215717
+2024-05-30T13:06:55.718+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:06:55.743+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins
+2024-05-30T13:06:55.745+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.0.0' applied to database
+2024-05-30T13:06:55.746+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/changelog.xml::add_tag_v.1.0.0::martins ran successfully in 2ms
+2024-05-30T13:06:55.750+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins
+2024-05-30T13:06:55.758+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table achievement created
+2024-05-30T13:06:55.758+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-achievement.xml::create_table_achievement::martins ran successfully in 7ms
+2024-05-30T13:06:55.762+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-game-session.xml::create_table_game_session::martins
+2024-05-30T13:06:55.771+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table game_session created
+2024-05-30T13:06:55.772+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-game-session.xml::create_table_game_session::martins ran successfully in 10ms
+2024-05-30T13:06:55.775+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-kid.xml::create_table_kid::martins
+2024-05-30T13:06:55.786+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table kid created
+2024-05-30T13:06:55.787+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-kid.xml::create_table_kid::martins ran successfully in 11ms
+2024-05-30T13:06:55.791+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.0.0/create-table-leaderboard.xml::create_table_leaderboard::martins
+2024-05-30T13:06:55.799+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table leaderboard created
+2024-05-30T13:06:55.801+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.0.0/create-table-leaderboard.xml::create_table_leaderboard::martins ran successfully in 8ms
+2024-05-30T13:06:55.805+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.1.0/changelog.xml::add_tag_v.1.1.0::martins
+2024-05-30T13:06:55.806+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.1.0' applied to database
+2024-05-30T13:06:55.807+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.1.0/changelog.xml::add_tag_v.1.1.0::martins ran successfully in 1ms
+2024-05-30T13:06:55.810+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.1.0/create-table-reward.xml::create_table_reward::martins
+2024-05-30T13:06:55.818+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table reward created
+2024-05-30T13:06:55.819+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.1.0/create-table-reward.xml::create_table_reward::martins ran successfully in 9ms
+2024-05-30T13:06:55.822+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.1.0/create-table-task.xml::create_table_task::martins
+2024-05-30T13:06:55.830+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table task created
+2024-05-30T13:06:55.831+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.1.0/create-table-task.xml::create_table_task::martins ran successfully in 8ms
+2024-05-30T13:06:55.834+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.1.0/create-table-user-progress.xml::create_table_user_progress::martins
+2024-05-30T13:06:55.841+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Table user_progress created
+2024-05-30T13:06:55.842+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.1.0/create-table-user-progress.xml::create_table_user_progress::martins ran successfully in 8ms
+2024-05-30T13:06:55.845+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins
+2024-05-30T13:06:55.848+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.1.0' applied to database
+2024-05-30T13:06:55.848+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins ran successfully in 2ms
+2024-05-30T13:06:55.851+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.2.0/add_foreign_key_to_achievement.xml::add_foreign_key_to_achievement::martins
+2024-05-30T13:06:55.870+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to achievement (reward_id)
+2024-05-30T13:06:55.872+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.2.0/add_foreign_key_to_achievement.xml::add_foreign_key_to_achievement::martins ran successfully in 20ms
+2024-05-30T13:06:55.875+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.2.0/add_foreign_key_to_leaderboard.xml::add_foreign_key_to_leaderboard::martins
+2024-05-30T13:06:55.892+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to leaderboard (task_id)
+2024-05-30T13:06:55.905+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to leaderboard (kid_id)
+2024-05-30T13:06:55.905+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.2.0/add_foreign_key_to_leaderboard.xml::add_foreign_key_to_leaderboard::martins ran successfully in 29ms
+2024-05-30T13:06:55.907+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.2.0/add_foreign_key_to_user_progress.xml::add_foreign_key_to_user_progress::martins
+2024-05-30T13:06:55.921+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to user_progress (kid_id)
+2024-05-30T13:06:55.934+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to user_progress (task_id)
+2024-05-30T13:06:55.934+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.2.0/add_foreign_key_to_user_progress.xml::add_foreign_key_to_user_progress::martins ran successfully in 26ms
+2024-05-30T13:06:55.937+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.2.0/add_foreign_key_to_game_session.xml::add_foreign_key_to_game_session::martins
+2024-05-30T13:06:55.950+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to game_session (kid_id)
+2024-05-30T13:06:55.964+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : Foreign key constraint added to game_session (task_id)
+2024-05-30T13:06:55.964+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.2.0/add_foreign_key_to_game_session.xml::add_foreign_key_to_game_session::martins ran successfully in 27ms
+2024-05-30T13:06:55.970+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T13:06:55.970+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : Run:                         14
+2024-05-30T13:06:55.971+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : Previously run:               0
+2024-05-30T13:06:55.971+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T13:06:55.971+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T13:06:55.971+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           14
+2024-05-30T13:06:55.972+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T13:06:55.973+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.command                        : Update command completed successfully.
+2024-05-30T13:06:55.973+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 14
+2024-05-30T13:06:55.976+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T13:06:55.977+02:00  INFO 12868 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T13:06:56.065+02:00  INFO 12868 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T13:06:56.122+02:00  INFO 12868 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T13:06:56.153+02:00  INFO 12868 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T13:06:56.387+02:00  INFO 12868 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T13:06:56.434+02:00  WARN 12868 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T13:06:56.712+02:00 ERROR 12868 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.Reward' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-05-30T13:06:56.712+02:00  WARN 12868 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.Reward' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-05-30T13:06:56.713+02:00  INFO 12868 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T13:06:56.718+02:00  INFO 12868 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T13:06:56.719+02:00  INFO 12868 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T13:06:56.727+02:00  INFO 12868 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T13:06:56.737+02:00 ERROR 12868 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.Reward' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.Reward' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 15 common frames omitted
+Caused by: org.hibernate.MappingException: Column 'id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.Reward' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.hibernate.mapping.Value.checkColumnDuplication(Value.java:196) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.MappingHelper.checkPropertyColumnDuplication(MappingHelper.java:251) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:939) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:694) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:276) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:496) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.8.jar:6.1.8]
+	... 19 common frames omitted
+
+2024-05-30T13:09:52.859+02:00  INFO 5688 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 5688 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T13:09:52.861+02:00  INFO 5688 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T13:09:53.385+02:00  INFO 5688 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T13:09:53.437+02:00  INFO 5688 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 7 JPA repository interfaces.
+2024-05-30T13:09:53.784+02:00  INFO 5688 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T13:09:53.791+02:00  INFO 5688 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T13:09:53.792+02:00  INFO 5688 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T13:09:53.836+02:00  INFO 5688 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T13:09:53.837+02:00  INFO 5688 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 947 ms
+2024-05-30T13:09:53.931+02:00  INFO 5688 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T13:09:54.121+02:00  INFO 5688 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35dcd032
+2024-05-30T13:09:54.122+02:00  INFO 5688 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T13:09:54.570+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:09:54.603+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-05-30T13:09:54.605+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:09:54.611+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T13:09:54.612+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T13:09:54.612+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              14
+2024-05-30T13:09:54.612+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T13:09:54.612+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T13:09:54.612+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           14
+2024-05-30T13:09:54.613+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T13:09:54.626+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T13:09:54.627+02:00  INFO 5688 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T13:09:54.673+02:00  INFO 5688 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T13:09:54.701+02:00  INFO 5688 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T13:09:54.723+02:00  INFO 5688 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T13:09:54.907+02:00  INFO 5688 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T13:09:54.943+02:00  WARN 5688 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T13:09:55.157+02:00 ERROR 5688 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'kid_id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.GameSession' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-05-30T13:09:55.158+02:00  WARN 5688 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'kid_id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.GameSession' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+2024-05-30T13:09:55.158+02:00  INFO 5688 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T13:09:55.164+02:00  INFO 5688 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T13:09:55.165+02:00  INFO 5688 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T13:09:55.172+02:00  INFO 5688 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T13:09:55.182+02:00 ERROR 5688 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'kid_id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.GameSession' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Column 'kid_id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.GameSession' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 15 common frames omitted
+Caused by: org.hibernate.MappingException: Column 'kid_id' is duplicated in mapping for entity 'de.ait.project_KidVenture.entity.GameSession' (use '@Column(insertable=false, updatable=false)' when mapping multiple properties to the same column)
+	at org.hibernate.mapping.Value.checkColumnDuplication(Value.java:196) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.MappingHelper.checkPropertyColumnDuplication(MappingHelper.java:251) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:939) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:694) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:276) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:496) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:280) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.8.jar:6.1.8]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.8.jar:6.1.8]
+	... 19 common frames omitted
+
+2024-05-30T13:11:12.627+02:00  INFO 6796 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 6796 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T13:11:12.629+02:00  INFO 6796 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T13:11:13.194+02:00  INFO 6796 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T13:11:13.245+02:00  INFO 6796 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 7 JPA repository interfaces.
+2024-05-30T13:11:13.612+02:00  INFO 6796 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T13:11:13.620+02:00  INFO 6796 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T13:11:13.620+02:00  INFO 6796 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T13:11:13.665+02:00  INFO 6796 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T13:11:13.665+02:00  INFO 6796 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1006 ms
+2024-05-30T13:11:13.762+02:00  INFO 6796 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T13:11:13.959+02:00  INFO 6796 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17b6ad97
+2024-05-30T13:11:13.961+02:00  INFO 6796 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T13:11:14.438+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:11:14.474+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-05-30T13:11:14.476+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              14
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           14
+2024-05-30T13:11:14.484+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T13:11:14.497+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T13:11:14.498+02:00  INFO 6796 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T13:11:14.552+02:00  INFO 6796 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T13:11:14.582+02:00  INFO 6796 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T13:11:14.605+02:00  INFO 6796 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T13:11:14.796+02:00  INFO 6796 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T13:11:14.832+02:00  WARN 6796 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T13:11:15.534+02:00  INFO 6796 --- [project_KidVenture] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-30T13:11:15.536+02:00  INFO 6796 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T13:11:15.654+02:00  WARN 6796 --- [project_KidVenture] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-30T13:11:15.673+02:00  WARN 6796 --- [project_KidVenture] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9b0446b2-034c-4818-8e9a-1ac755c068c6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-05-30T13:11:15.686+02:00  INFO 6796 --- [project_KidVenture] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-05-30T13:11:15.957+02:00  INFO 6796 --- [project_KidVenture] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@110b6c78, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e62d757, org.springframework.security.web.context.SecurityContextHolderFilter@7f746160, org.springframework.security.web.header.HeaderWriterFilter@5abf9a76, org.springframework.web.filter.CorsFilter@597f2d3f, org.springframework.security.web.authentication.logout.LogoutFilter@7e641005, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f89b44e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2100b770, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7746330a, org.springframework.security.web.session.SessionManagementFilter@2aa85cc4, org.springframework.security.web.access.ExceptionTranslationFilter@1f15d346, org.springframework.security.web.access.intercept.AuthorizationFilter@794cd751]
+2024-05-30T13:11:16.394+02:00  INFO 6796 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-05-30T13:11:16.400+02:00  INFO 6796 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Started ProjectKidIfYApplication in 4.099 seconds (process running for 4.521)
+2024-05-30T13:11:25.852+02:00  INFO 6796 --- [project_KidVenture] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T13:11:25.853+02:00  INFO 6796 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T13:11:25.858+02:00  INFO 6796 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T14:41:04.481+02:00  INFO 15652 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 15652 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T14:41:04.484+02:00  INFO 15652 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T14:41:05.194+02:00  INFO 15652 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T14:41:05.246+02:00  INFO 15652 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 7 JPA repository interfaces.
+2024-05-30T14:41:05.708+02:00  INFO 15652 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T14:41:05.718+02:00  INFO 15652 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T14:41:05.718+02:00  INFO 15652 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T14:41:05.776+02:00  INFO 15652 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T14:41:05.776+02:00  INFO 15652 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1259 ms
+2024-05-30T14:41:05.914+02:00  INFO 15652 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T14:41:06.194+02:00  INFO 15652 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56ec6960
+2024-05-30T14:41:06.195+02:00  INFO 15652 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T14:41:06.808+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:41:06.851+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-05-30T14:41:06.852+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:41:06.859+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T14:41:06.860+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T14:41:06.860+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              14
+2024-05-30T14:41:06.860+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T14:41:06.860+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T14:41:06.860+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           14
+2024-05-30T14:41:06.862+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T14:41:06.878+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T14:41:06.879+02:00  INFO 15652 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T14:41:06.942+02:00  INFO 15652 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T14:41:07.003+02:00  INFO 15652 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T14:41:07.045+02:00  INFO 15652 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T14:41:07.293+02:00  INFO 15652 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T14:41:07.345+02:00  WARN 15652 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T14:41:08.117+02:00  INFO 15652 --- [project_KidVenture] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-30T14:41:08.119+02:00  INFO 15652 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T14:41:08.213+02:00  WARN 15652 --- [project_KidVenture] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-30T14:41:08.231+02:00  WARN 15652 --- [project_KidVenture] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e5801408-47de-46a1-b630-729947dfa4cb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-05-30T14:41:08.241+02:00  INFO 15652 --- [project_KidVenture] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-05-30T14:41:08.475+02:00  INFO 15652 --- [project_KidVenture] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@12581426, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c84c32f, org.springframework.security.web.context.SecurityContextHolderFilter@3ae5cbb9, org.springframework.security.web.header.HeaderWriterFilter@363751f2, org.springframework.web.filter.CorsFilter@57ac220f, org.springframework.security.web.authentication.logout.LogoutFilter@76b8b6a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fb70e94, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d05d022, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7e641005, org.springframework.security.web.session.SessionManagementFilter@11c68269, org.springframework.security.web.access.ExceptionTranslationFilter@1d4ee936, org.springframework.security.web.access.intercept.AuthorizationFilter@62099f75]
+2024-05-30T14:41:08.892+02:00  INFO 15652 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-05-30T14:41:08.897+02:00  INFO 15652 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Started ProjectKidIfYApplication in 4.796 seconds (process running for 5.504)
+2024-05-30T14:41:31.360+02:00  INFO 15652 --- [project_KidVenture] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T14:41:31.363+02:00  INFO 15652 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T14:41:31.373+02:00  INFO 15652 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T14:41:33.412+02:00  INFO 17544 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 17544 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T14:41:33.414+02:00  INFO 17544 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T14:41:34.066+02:00  INFO 17544 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T14:41:34.134+02:00  INFO 17544 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 7 JPA repository interfaces.
+2024-05-30T14:41:34.670+02:00  INFO 17544 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T14:41:34.678+02:00  INFO 17544 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T14:41:34.679+02:00  INFO 17544 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T14:41:34.732+02:00  INFO 17544 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T14:41:34.733+02:00  INFO 17544 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1288 ms
+2024-05-30T14:41:34.832+02:00  INFO 17544 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T14:41:35.026+02:00  INFO 17544 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@14b95942
+2024-05-30T14:41:35.028+02:00  INFO 17544 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T14:41:35.503+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:41:35.540+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-05-30T14:41:35.542+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:41:35.548+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T14:41:35.549+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T14:41:35.549+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              14
+2024-05-30T14:41:35.549+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T14:41:35.549+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T14:41:35.549+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           14
+2024-05-30T14:41:35.550+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T14:41:35.563+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T14:41:35.565+02:00  INFO 17544 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T14:41:35.621+02:00  INFO 17544 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T14:41:35.656+02:00  INFO 17544 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T14:41:35.684+02:00  INFO 17544 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T14:41:35.910+02:00  INFO 17544 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T14:41:35.968+02:00  WARN 17544 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T14:41:36.847+02:00  INFO 17544 --- [project_KidVenture] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-30T14:41:36.849+02:00  INFO 17544 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T14:41:36.938+02:00  WARN 17544 --- [project_KidVenture] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-30T14:41:36.954+02:00  WARN 17544 --- [project_KidVenture] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fed6ab76-e5a6-474a-a774-26d504163ae1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-05-30T14:41:36.965+02:00  INFO 17544 --- [project_KidVenture] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-05-30T14:41:37.180+02:00  INFO 17544 --- [project_KidVenture] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@57ac220f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e641005, org.springframework.security.web.context.SecurityContextHolderFilter@7fb70e94, org.springframework.security.web.header.HeaderWriterFilter@6c65c6f0, org.springframework.web.filter.CorsFilter@2ccfd2cb, org.springframework.security.web.authentication.logout.LogoutFilter@6d9bcf19, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e132a9b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ff26b29, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@36c8e1c6, org.springframework.security.web.session.SessionManagementFilter@6018a6a2, org.springframework.security.web.access.ExceptionTranslationFilter@363751f2, org.springframework.security.web.access.intercept.AuthorizationFilter@4a2c69a6]
+2024-05-30T14:41:37.568+02:00  INFO 17544 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-05-30T14:41:37.575+02:00  INFO 17544 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Started ProjectKidIfYApplication in 4.486 seconds (process running for 4.914)
+2024-05-30T14:45:31.846+02:00  INFO 17544 --- [project_KidVenture] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T14:45:31.847+02:00  INFO 17544 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T14:45:31.852+02:00  INFO 17544 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T14:51:25.409+02:00  INFO 15576 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 15576 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T14:51:25.410+02:00  INFO 15576 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T14:51:25.916+02:00  INFO 15576 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T14:51:25.965+02:00  INFO 15576 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 7 JPA repository interfaces.
+2024-05-30T14:51:26.290+02:00  INFO 15576 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T14:51:26.299+02:00  INFO 15576 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T14:51:26.299+02:00  INFO 15576 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T14:51:26.343+02:00  INFO 15576 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T14:51:26.343+02:00  INFO 15576 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 903 ms
+2024-05-30T14:51:26.434+02:00  INFO 15576 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T14:51:26.645+02:00  INFO 15576 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3855d9b2
+2024-05-30T14:51:26.647+02:00  INFO 15576 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T14:51:27.144+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:51:27.182+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.changelog                      : Change failed validation!
+2024-05-30T14:51:27.183+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.command                        : Logging exception.
+2024-05-30T14:51:27.184+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Details
+2024-05-30T14:51:27.184+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Class:  ValidationFailedException
+2024-05-30T14:51:27.184+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+2024-05-30T14:51:27.184+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Source:  4.27.0
+2024-05-30T14:51:27.184+02:00  INFO 15576 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T14:51:27.185+02:00  WARN 15576 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+2024-05-30T14:51:27.186+02:00  INFO 15576 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T14:51:27.192+02:00  INFO 15576 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T14:51:27.194+02:00  INFO 15576 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T14:51:27.202+02:00  INFO 15576 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T14:51:27.216+02:00 ERROR 15576 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/v.1.2.0/changelog.xml::add_tag_v.1.2.0::martins was: 9:fc63c967135c3d30e4d556490e06a9ff but is now: 9:08e0cbb60848448564ec40a4370cfdbe
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+
+2024-05-30T14:57:38.937+02:00  INFO 19076 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 19076 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T14:57:38.939+02:00  INFO 19076 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T14:57:39.456+02:00  INFO 19076 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T14:57:39.507+02:00  INFO 19076 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 7 JPA repository interfaces.
+2024-05-30T14:57:39.816+02:00  INFO 19076 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T14:57:39.824+02:00  INFO 19076 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T14:57:39.824+02:00  INFO 19076 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T14:57:39.869+02:00  INFO 19076 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T14:57:39.870+02:00  INFO 19076 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 903 ms
+2024-05-30T14:57:39.952+02:00  INFO 19076 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T14:57:40.149+02:00  INFO 19076 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@da09250
+2024-05-30T14:57:40.151+02:00  INFO 19076 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T14:57:40.615+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:57:40.672+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-05-30T14:57:40.673+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.command                        : Using deploymentId: 7073860673
+2024-05-30T14:57:40.674+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T14:57:40.680+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.3.0/changelog.xml::add_tag_v.1.2.0::martins
+2024-05-30T14:57:40.683+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.changelog                      : Tag 'v.1.1.0' applied to database
+2024-05-30T14:57:40.683+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.3.0/changelog.xml::add_tag_v.1.2.0::martins ran successfully in 2ms
+2024-05-30T14:57:40.688+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.3.0/add-kids.xml::add_kid::martins
+2024-05-30T14:57:40.698+02:00 ERROR 19076 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.3.0/add-kids.xml::add_kid::martins encountered an exception.
+
+liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'registration_date' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T14:57:40.705+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : Run:                          1
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              14
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           15
+2024-05-30T14:57:40.706+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T14:57:40.708+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.command                        : Update command encountered an exception.
+2024-05-30T14:57:40.711+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.command                        : Logging exception.
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Details
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Class:  SQLSyntaxErrorException
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Unknown column 'registration_date' in 'field list'
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Source:  MySQL 5.7.44-log
+2024-05-30T14:57:40.713+02:00  INFO 19076 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T14:57:40.714+02:00  WARN 19076 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+2024-05-30T14:57:40.715+02:00  INFO 19076 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T14:57:40.719+02:00  INFO 19076 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T14:57:40.721+02:00  INFO 19076 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T14:57:40.730+02:00  INFO 19076 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T14:57:40.739+02:00 ERROR 19076 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '15.02.2024')]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'registration_date' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T15:00:32.678+02:00  INFO 25948 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 25948 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T15:00:32.680+02:00  INFO 25948 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T15:00:33.243+02:00  INFO 25948 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T15:00:33.290+02:00  INFO 25948 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
+2024-05-30T15:00:33.586+02:00  INFO 25948 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T15:00:33.592+02:00  INFO 25948 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T15:00:33.593+02:00  INFO 25948 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T15:00:33.635+02:00  INFO 25948 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T15:00:33.635+02:00  INFO 25948 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 928 ms
+2024-05-30T15:00:33.722+02:00  INFO 25948 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T15:00:33.920+02:00  INFO 25948 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4cae66a8
+2024-05-30T15:00:33.921+02:00  INFO 25948 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T15:00:34.352+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T15:00:34.407+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-05-30T15:00:34.408+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.command                        : Using deploymentId: 7074034408
+2024-05-30T15:00:34.409+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T15:00:34.416+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.ui                             : Running Changeset: db/changelog/v.1.3.0/add-kids.xml::add_kid::martins
+2024-05-30T15:00:34.427+02:00 ERROR 25948 --- [project_KidVenture] [main] liquibase.changelog                      : ChangeSet db/changelog/v.1.3.0/add-kids.xml::add_kid::martins encountered an exception.
+
+liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'registration_date' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+
+2024-05-30T15:00:34.433+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              15
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           15
+2024-05-30T15:00:34.434+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T15:00:34.435+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.command                        : Update command encountered an exception.
+2024-05-30T15:00:34.438+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T15:00:34.439+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.command                        : Logging exception.
+2024-05-30T15:00:34.439+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Details
+2024-05-30T15:00:34.439+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Class:  SQLSyntaxErrorException
+2024-05-30T15:00:34.439+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Reason:  Unknown column 'registration_date' in 'field list'
+2024-05-30T15:00:34.439+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.ui                             : ERROR: Exception Primary Source:  MySQL 5.7.44-log
+2024-05-30T15:00:34.440+02:00  INFO 25948 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T15:00:34.440+02:00  WARN 25948 --- [project_KidVenture] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+2024-05-30T15:00:34.441+02:00  INFO 25948 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-30T15:00:34.462+02:00  INFO 25948 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T15:00:34.464+02:00  INFO 25948 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-30T15:00:34.471+02:00  INFO 25948 --- [project_KidVenture] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-30T15:00:34.480+02:00 ERROR 25948 --- [project_KidVenture] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.8.jar:6.1.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.0.jar:3.3.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.0.jar:3.3.0]
+	at de.ait.project_KidVenture.ProjectKidIfYApplication.main(ProjectKidIfYApplication.java:10) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 10 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.8.jar:6.1.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.8.jar:6.1.8]
+	... 17 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 19 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 35 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/v.1.3.0/add-kids.xml::add_kid::martins:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 43 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Unknown column 'registration_date' in 'field list' [Failed SQL: (1054) INSERT INTO project_KidVenture.kid (name, age, email, registration_date) VALUES ('Mike', '10', 'mike.calvin@mail.com', '2024-02-15')]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 58 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'registration_date' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="add_foreign_key_to_user_progress" author="martins">
+        <addForeignKeyConstraint
+                baseTableName="user_progress"
+                baseColumnNames="kid_id"
+                constraintName="fk_user_progress_kid"
+                referencedTableName="kid"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="user_progress"
+                baseColumnNames="task_id"
+                constraintName="fk_user_progress_task"
+                referencedTableName="task"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

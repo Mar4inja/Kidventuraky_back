@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create_table_game_session" author="martins">
+        <!-- Create the 'game_session' table -->
+        <createTable tableName="game_session">
+            <!-- Define columns -->
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="kid_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="TIMESTAMP"/>
+            <column name="score" type="DOUBLE"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
