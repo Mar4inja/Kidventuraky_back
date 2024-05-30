@@ -1,6 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.User;
+import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ public class UserController {
 
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
 
     @Operation(summary = "Get All users")
@@ -46,5 +48,13 @@ public class UserController {
     public ResponseEntity<User> save(@RequestBody User user) {
         User savedUser = userService.save(user);
         return ResponseEntity.ok(savedUser);
+    }
+
+    @Operation(summary = "Get info about User")
+    @GetMapping("/info/{id}")
+    public ResponseEntity<User> getInfo(@PathVariable Long id) {
+     User userInfo = userService.findById(id).orElse(null);
+       return ResponseEntity.ok(userInfo);
+
     }
 }

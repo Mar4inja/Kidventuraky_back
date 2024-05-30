@@ -3,6 +3,7 @@ package de.ait.project_KidVenture.services;
 import de.ait.project_KidVenture.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -15,4 +16,6 @@ public interface UserService {
     void delete(Long id);
 
     User getInfo(User user);
+
+    Optional<User> findById(Long id);
 }

@@ -69,16 +69,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getInfo(User user) {
-        String kidUser = user.getName();
-        User currentKind = userRepository.findByEmail(kidUser);
+        String userName = user.getName();
+        User currentUser = userRepository.findByEmail(userName);
 
-        if (currentKind == null) {
+        if (currentUser == null) {
             try {
-                throw new NoSuchFieldException("User not found!!");
+                throw new NoSuchFieldException("User is not found");
             } catch (NoSuchFieldException e) {
                 throw new RuntimeException(e);
             }
         }
-        return currentKind;
+        return currentUser;
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 }
