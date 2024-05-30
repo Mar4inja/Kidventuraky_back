@@ -5336,3 +5336,37 @@ java.lang.NoSuchFieldException: User is not found
 2024-05-30T22:20:46.092+02:00  INFO 14128 --- [project_KidVenture] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-30T22:20:46.094+02:00  INFO 14128 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-30T22:20:46.099+02:00  INFO 14128 --- [project_KidVenture] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-30T22:20:50.350+02:00  INFO 23916 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Starting ProjectKidIfYApplication using Java 17.0.9 with PID 23916 (D:\PROJ\Projects\project_KidVenture\target\classes started by mar4i in D:\PROJ\Projects\project_KidVenture)
+2024-05-30T22:20:50.352+02:00  INFO 23916 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : The following 1 profile is active: "dev"
+2024-05-30T22:20:50.842+02:00  INFO 23916 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-30T22:20:50.891+02:00  INFO 23916 --- [project_KidVenture] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 7 JPA repository interfaces.
+2024-05-30T22:20:51.189+02:00  INFO 23916 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-30T22:20:51.196+02:00  INFO 23916 --- [project_KidVenture] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-30T22:20:51.196+02:00  INFO 23916 --- [project_KidVenture] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-30T22:20:51.238+02:00  INFO 23916 --- [project_KidVenture] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-30T22:20:51.238+02:00  INFO 23916 --- [project_KidVenture] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 854 ms
+2024-05-30T22:20:51.320+02:00  INFO 23916 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-30T22:20:51.528+02:00  INFO 23916 --- [project_KidVenture] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28e7bb31
+2024-05-30T22:20:51.530+02:00  INFO 23916 --- [project_KidVenture] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-30T22:20:52.021+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T22:20:52.064+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-05-30T22:20:52.066+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.changelog                      : Reading from project_KidVenture.databasechangelog
+2024-05-30T22:20:52.072+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : UPDATE SUMMARY
+2024-05-30T22:20:52.073+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : Run:                          0
+2024-05-30T22:20:52.073+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : Previously run:              18
+2024-05-30T22:20:52.073+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : Filtered out:                 0
+2024-05-30T22:20:52.073+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : -------------------------------
+2024-05-30T22:20:52.073+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : Total change sets:           18
+2024-05-30T22:20:52.074+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.util                           : Update summary generated
+2024-05-30T22:20:52.088+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.lockservice                    : Successfully released change log lock
+2024-05-30T22:20:52.089+02:00  INFO 23916 --- [project_KidVenture] [main] liquibase.command                        : Command execution complete
+2024-05-30T22:20:52.134+02:00  INFO 23916 --- [project_KidVenture] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-30T22:20:52.164+02:00  INFO 23916 --- [project_KidVenture] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-30T22:20:52.193+02:00  INFO 23916 --- [project_KidVenture] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-30T22:20:52.395+02:00  INFO 23916 --- [project_KidVenture] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-30T22:20:52.428+02:00  WARN 23916 --- [project_KidVenture] [main] org.hibernate.dialect.Dialect            : HHH000511: The 5.7.44 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2024-05-30T22:20:53.019+02:00  INFO 23916 --- [project_KidVenture] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-30T22:20:53.021+02:00  INFO 23916 --- [project_KidVenture] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-30T22:20:53.251+02:00  WARN 23916 --- [project_KidVenture] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-30T22:20:53.561+02:00  INFO 23916 --- [project_KidVenture] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-05-30T22:20:53.567+02:00  INFO 23916 --- [project_KidVenture] [main] d.a.p.ProjectKidIfYApplication           : Started ProjectKidIfYApplication in 3.528 seconds (process running for 3.923)
