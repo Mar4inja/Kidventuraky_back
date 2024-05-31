@@ -7,7 +7,7 @@
         <!-- Create the 'game_session' table -->
         <createTable tableName="game_session">
             <!-- Define columns -->
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="user_id" type="BIGINT">

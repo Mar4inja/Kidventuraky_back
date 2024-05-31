@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +35,7 @@ public class TaskServiceImpl implements TaskService {
                 || task.getTaskDescription() == null || task.getTaskDescription().isEmpty()
                 || task.getDifficultyLevel() == null || task.getDifficultyLevel().isEmpty()
                 || task.getTaskType() == null || task.getTaskType().isEmpty()
+                || task.getTaskContent() == null || task.getTaskContent().isEmpty()
                 || task.getCorrectAnswer() == null || task.getCorrectAnswer().isEmpty()) {
 
         }
@@ -46,6 +48,7 @@ public class TaskServiceImpl implements TaskService {
         task.setTaskDescription(task.getTaskDescription());
         task.setDifficultyLevel(task.getDifficultyLevel());
         task.setTaskType(task.getTaskType());
+        task.setTaskContent(task.getTaskContent());
         task.setCorrectAnswer(task.getCorrectAnswer());
         Task savedTask = taskRepository.save(task);
         return savedTask;
@@ -54,27 +57,68 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task updateTask(Task task) {
-        return null;
+
+        // Atrodam esošo uzdevumu pēc id
+        Task currentTask = taskRepository.findById(task.getId()).orElseThrow(() -> new IllegalArgumentException("Task not found"));
+        Long id = currentTask.getId();
+        // Pārbaudām, vai uzdevums eksistē
+        Optional<Task> taskOptional = taskRepository.findById(id);
+
+        if (taskOptional.isPresent()) {
+            Task existingTask = taskOptional.get();
+            // Atjauninām laukus tikai tad, ja tie nav null
+            if (task.getTitle() != null) {
+                existingTask.setTitle(task.getTitle());
+            }
+            if (task.getTaskDescription() != null) {
+                existingTask.setTaskDescription(task.getTaskDescription());
+            }
+            if (task.getDifficultyLevel() != null) {
+                existingTask.setDifficultyLevel(task.getDifficultyLevel());
+            }
+            if (task.getTaskType() != null) {
+                existingTask.setTaskType(task.getTaskType());
+            }
+            if (task.getTaskContent() != null) {
+                existingTask.setTaskContent(task.getTaskContent());
+            }
+            if (task.getCorrectAnswer() != null) {
+                existingTask.setCorrectAnswer(task.getCorrectAnswer());
+            }
+            // Atjauninām laikus tikai tad, ja tie nav null
+            if (task.getCreatedAt() != null) {
+                existingTask.setCreatedAt(task.getCreatedAt());
+            }
+            if (task.getUpdatedAt() != null) {
+                existingTask.setUpdatedAt(task.getUpdatedAt());
+            }
+            // Saglabājam un atgriežam atjaunināto uzdevumu
+            return taskRepository.save(existingTask);
+        } else {
+            throw new IllegalArgumentException("Task not found");
+        }
     }
 
     @Override
-    public void deleteTask(Long id) {
-
+    public void deleteTaskById(Long id) {
+        if (taskRepository.findById(id) == null) {
+            throw new IllegalArgumentException("Task not found");
+        }
+        taskRepository.deleteById(id);
     }
 
     @Override
     public List<Task> searchTaskByDifficulty(String difficulty) {
-        return List.of();
+        return taskRepository.findAll().stream()
+                .filter(task -> task.getDifficultyLevel().equalsIgnoreCase(difficulty))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Task> searchByType(String taskType) {
-        return List.of();
+        return taskRepository.findAll().stream()
+                .filter(task -> task.getTaskType().equals(taskType))
+                .collect(Collectors.toList());
     }
 }
 
-//    private String title;
-//    private String taskDescription;
-//    private String difficultyLevel;
-//    private String taskType;
-//    private String correctAnswer;

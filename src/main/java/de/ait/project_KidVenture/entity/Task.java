@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "task")
 @AllArgsConstructor
@@ -31,6 +33,15 @@ public class Task {
     @Column(name = "task_type")
     private String taskType;
 
+    @Column(name = "task_content", columnDefinition = "TEXT")
+    private String taskContent;
+
     @Column(name = "correct_answer")
     private String correctAnswer;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }

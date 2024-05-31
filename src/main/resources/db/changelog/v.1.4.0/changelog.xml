@@ -9,6 +9,9 @@
     </changeSet>
 
     <include file="add-users.xml" relativeToChangelogFile="true"/>
+    <include file="add-created-at-column-to-task.xml" relativeToChangelogFile="true"/>
+    <include file="add-updated-at-column-to-task.xml" relativeToChangelogFile="true"/>
+    <include file="add-task-content-column-to-task.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>

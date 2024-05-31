@@ -14,7 +14,7 @@ public interface TaskService {
 
     Task updateTask(Task task);
 
-    void deleteTask(Long id);
+    void deleteTaskById(Long id);
 
     List<Task> searchTaskByDifficulty(String difficulty);
 

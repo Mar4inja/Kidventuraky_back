@@ -7,7 +7,7 @@
         <!-- Create the 'leaderboard' table -->
         <createTable tableName="leaderboard">
             <!-- Define columns -->
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="task_id" type="BIGINT">

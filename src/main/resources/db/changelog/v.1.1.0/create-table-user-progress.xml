@@ -7,7 +7,7 @@
         <!-- Create the 'user_progress' table -->
         <createTable tableName="user_progress">
             <!-- Define columns -->
-            <column name="id" type="BIGINT">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <!-- Foreign key reference to 'user' table -->
