@@ -18,8 +18,6 @@ public class UserController {
 
 
     private final UserService userService;
-    private final UserRepository userRepository;
-
 
     @Operation(summary = "Get All users")
     @GetMapping("/getAll")
@@ -28,19 +26,11 @@ public class UserController {
         return ResponseEntity.ok(usersList);
     }
 
-    @Operation(summary = "Delete by ID")
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<User> deleteById(@PathVariable Long id) {
-        userService.delete(id);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(summary = "Update data")
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateData(@PathVariable Long id, @RequestBody User updatedUser) {
-        User user = userService.update(id, updatedUser);
-        return ResponseEntity.ok(user);
+    @Operation(summary = "Get info about User")
+    @GetMapping("/info/{id}")
+    public ResponseEntity<User> getInfo(@PathVariable Long id) {
+        User userInfo = userService.findById(id).orElse(null);
+        return ResponseEntity.ok(userInfo);
     }
 
     @Operation(summary = "Save user")
@@ -50,11 +40,17 @@ public class UserController {
         return ResponseEntity.ok(savedUser);
     }
 
-    @Operation(summary = "Get info about User")
-    @GetMapping("/info/{id}")
-    public ResponseEntity<User> getInfo(@PathVariable Long id) {
-     User userInfo = userService.findById(id).orElse(null);
-       return ResponseEntity.ok(userInfo);
+    @Operation(summary = "Update data")
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateData(@PathVariable Long id, @RequestBody User updatedUser) {
+        User user = userService.update(id, updatedUser);
+        return ResponseEntity.ok(user);
+    }
 
+    @Operation(summary = "Delete by ID")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<User> deleteById(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

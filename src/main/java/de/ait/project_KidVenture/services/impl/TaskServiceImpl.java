@@ -6,6 +6,7 @@ import de.ait.project_KidVenture.services.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,10 +38,11 @@ public class TaskServiceImpl implements TaskService {
                 || task.getTaskType() == null || task.getTaskType().isEmpty()
                 || task.getTaskContent() == null || task.getTaskContent().isEmpty()
                 || task.getCorrectAnswer() == null || task.getCorrectAnswer().isEmpty()) {
-
+            throw new IllegalArgumentException("All fields must be filled");
         }
 
-        if (taskRepository.findByTitle(task.getTitle()) != null) {
+        Task existingTask = taskRepository.findByTitleAndTaskContent(task.getTitle(), task.getTaskContent());
+        if (existingTask != null) {
             throw new IllegalArgumentException("Task already exists");
         }
 
@@ -50,6 +52,9 @@ public class TaskServiceImpl implements TaskService {
         task.setTaskType(task.getTaskType());
         task.setTaskContent(task.getTaskContent());
         task.setCorrectAnswer(task.getCorrectAnswer());
+        task.setCreatedAt(LocalDateTime.now());
+        task.setUpdatedAt(LocalDateTime.now());
+
         Task savedTask = taskRepository.save(task);
         return savedTask;
 

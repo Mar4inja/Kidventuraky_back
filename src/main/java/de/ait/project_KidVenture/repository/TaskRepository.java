@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    Task findByTitle(String name);
+   Task findByTitleAndTaskContent(String task, String content);
 }

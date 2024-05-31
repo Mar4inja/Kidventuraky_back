@@ -30,6 +30,18 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTaskById(id));
     }
 
+    @Operation(summary = "Find task by difficulty. (Low)-(Medium)-(High)")
+    @GetMapping("/difficulty")
+    public ResponseEntity<List<Task>> getTasksByDifficulty(@RequestParam String difficulty) {
+        return ResponseEntity.ok( taskService.searchTaskByDifficulty(difficulty));
+    }
+
+    @Operation(summary = "Find task by type (practical)-(theoretical)")
+    @GetMapping("/type")
+    public ResponseEntity<List<Task>> getTasksByType(@RequestParam String type) {
+        return ResponseEntity.ok(taskService.searchByType(type));
+    }
+
     @Operation(summary = "Create new task")
     @PostMapping("/create")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
@@ -50,15 +62,5 @@ public class TaskController {
        return ResponseEntity.ok("Task deleted successfully");
     }
 
-    @Operation(summary = "Find task by difficulty. (Low)-(Medium)-(High)")
-    @GetMapping("/difficulty")
-    public ResponseEntity<List<Task>> getTasksByDifficulty(@RequestParam String difficulty) {
-        return ResponseEntity.ok( taskService.searchTaskByDifficulty(difficulty));
-    }
 
-    @Operation(summary = "Find task by type (practical)-(theoretical)")
-    @GetMapping("/type")
-    public ResponseEntity<List<Task>> getTasksByType(@RequestParam String type) {
-        return ResponseEntity.ok(taskService.searchByType(type));
-    }
 }
