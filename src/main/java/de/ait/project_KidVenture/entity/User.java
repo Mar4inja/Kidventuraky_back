@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -36,4 +38,8 @@ public class User {
 
     @Column(name = "registration_date", nullable = false)
     private LocalDate registrationDate;
+
+    // Piešķirtās balvas
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Reward> reward = new ArrayList<>();
 }

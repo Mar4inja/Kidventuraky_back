@@ -31,4 +31,7 @@ public class Reward {
     @Column(name = "reward_type")
     private String rewardType;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Norādiet kolonnu, kas satur lietotāja ID
+    private User user; // Šis lauks norāda uz lietotāju, kam pieder balva
 }

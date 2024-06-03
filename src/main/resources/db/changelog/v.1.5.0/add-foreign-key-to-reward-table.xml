@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add_foreign_key_to_reward_table" author="martins">
+        <addForeignKeyConstraint baseTableName="reward" baseColumnNames="user_id"
+                                 constraintName="fk_reward_user"
+                                 referencedTableName="user" referencedColumnNames="id"
+                                 onDelete="SET NULL" onUpdate="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>
