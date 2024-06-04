@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface LeaderboardService {
     // Create a new leaderboard entry
-    Leaderboard createLeaderboardEntry(Leaderboard leaderboard);
+    Leaderboard createLeaderboardEntry(Long taskId, Long userId);
 
     // Get a leaderboard entry by ID
     Optional<Leaderboard> getLeaderboardEntryById(Long id);
@@ -30,6 +30,10 @@ public interface LeaderboardService {
 
     // Get all leaderboard entries for a specific task
     List<Leaderboard> getAllEntriesForTask(Long taskId);
+
+    Leaderboard addUserToLeaderboard(Long userId, Long leaderboardId);
+
+    Leaderboard addTaskToLeaderboard(Long leaderboardId, Long taskId);
 }
 
 
