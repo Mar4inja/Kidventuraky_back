@@ -14,4 +14,6 @@ public interface LeaderboardRepository extends JpaRepository<Leaderboard, Long> 
     Optional<Leaderboard> findByUserIdAndTaskId(Long userId, Long taskId);
 
     List<Leaderboard> findTopByTaskIdOrderByRankAsc(Long taskId, PageRequest of);
+
+    List<Leaderboard> findAllByTaskId(Long taskId);
 }

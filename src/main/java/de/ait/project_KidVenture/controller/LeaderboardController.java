@@ -20,10 +20,13 @@ public class LeaderboardController {
 
     @Operation(summary = "Create a new empty leaderboard")
     @PostMapping("/create")
-    public ResponseEntity<Leaderboard> createLeaderboard(@PathVariable Long taskId, @PathVariable Long userId) {
+    public ResponseEntity<Leaderboard> createLeaderboard(@RequestParam Long taskId, @RequestParam Long userId) {
+        // Izveidojam jaunu vadības tabulu, izmantojot padotos uzdevuma un lietotāja ID
         Leaderboard leaderboardEntry = leaderboardService.createLeaderboardEntry(taskId, userId);
+        // Atgriežam veiksmīgi izveidoto vadības tabulu ar atbilstošu atbildi un statusu 201 (Created)
         return new ResponseEntity<>(leaderboardEntry, HttpStatus.CREATED);
     }
+
 
     @Operation(summary = "Get a leaderboard entry by ID")
     @GetMapping("/{id}")
@@ -66,7 +69,7 @@ public class LeaderboardController {
     }
 
     @Operation(summary = "Get all leaderboard entries for a specific task")
-    @GetMapping("/task/{taskId}/entries")
+    @GetMapping("/task/{taskId}")
     public ResponseEntity<List<Leaderboard>> getAllEntriesForTask(@PathVariable Long taskId) {
         List<Leaderboard> allEntriesForTask = leaderboardService.getAllEntriesForTask(taskId);
         return ResponseEntity.ok(allEntriesForTask);

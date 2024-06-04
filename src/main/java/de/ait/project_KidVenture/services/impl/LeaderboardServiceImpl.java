@@ -26,12 +26,13 @@ public class LeaderboardServiceImpl implements LeaderboardService {
 
     @Override
     public Leaderboard createLeaderboardEntry(Long taskId, Long userId) {
+        // Atrodam uzdevumu un lietotāju pēc to ID
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new EntityNotFoundException("Task not found"));
-
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
+        // Izveidojam jaunu vadības tabulas ierakstu ar saistīto uzdevumu un lietotāju
         Leaderboard leaderboard = new Leaderboard();
         leaderboard.setTask(task);
         leaderboard.setUser(user);
@@ -40,8 +41,11 @@ public class LeaderboardServiceImpl implements LeaderboardService {
         leaderboard.setRank(1);
         leaderboard.setScore(0);
 
+        // Saglabājam jauno ierakstu datu bāzē un atgriežam to
         return leaderboardRepository.save(leaderboard);
     }
+
+
 
     @Override
     public Optional<Leaderboard> getLeaderboardEntryById(Long id) {
@@ -90,7 +94,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
 
     @Override
     public List<Leaderboard> getAllEntriesForTask(Long taskId) {
-        return leaderboardRepository.findAll();
+        return leaderboardRepository.findAllByTaskId(taskId);
     }
 
     public Leaderboard addUserToLeaderboard(Long leaderboardId, Long userId) {
