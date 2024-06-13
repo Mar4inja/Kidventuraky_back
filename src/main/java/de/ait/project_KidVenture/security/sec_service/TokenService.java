@@ -1,9 +1,10 @@
 package de.ait.project_KidVenture.security.sec_service;
 
-import de.aittr.project_wishlist.domain.entity.Role;
-import de.aittr.project_wishlist.domain.entity.User;
-import de.aittr.project_wishlist.repository.interfaces.RoleRepository;
-import de.aittr.project_wishlist.security.AuthInfo;
+
+import de.ait.project_KidVenture.entity.Role;
+import de.ait.project_KidVenture.entity.User;
+import de.ait.project_KidVenture.repository.RoleRepository;
+import de.ait.project_KidVenture.security.AuthInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

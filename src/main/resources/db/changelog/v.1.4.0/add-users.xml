@@ -6,19 +6,19 @@
 
     <changeSet id="add_users" author="martins">
         <insert tableName="user">
-            <column name="name" value="Mike"/>
+            <column name="first_name" value="Mike"/>
+            <column name="last_name" value="Jackson"/>
             <column name="age" valueNumeric="10"/>
             <column name="email" value="mike.calvin@mail.com"/>
             <column name="password" value="password1"/>
-            <column name="registration_date" value="2024-02-15"/>
         </insert>
 
         <insert tableName="user">
-            <column name="name" value="Sam"/>
+            <column name="first_name" value="Sam"/>
+            <column name="last_name" value="Kenning"/>
             <column name="age" valueNumeric="12"/>
             <column name="email" value="sam.hill@mail.com"/>
             <column name="password" value="password2"/>
-            <column name="registration_date" value="2024-05-30"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

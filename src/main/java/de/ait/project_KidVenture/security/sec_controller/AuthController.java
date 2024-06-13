@@ -1,12 +1,14 @@
 package de.ait.project_KidVenture.security.sec_controller;
 
-import de.aittr.project_wishlist.domain.entity.User;
-import de.aittr.project_wishlist.repository.interfaces.UserRepository;
-import de.aittr.project_wishlist.security.sec_dto.RefreshRequestDto;
-import de.aittr.project_wishlist.security.sec_dto.TokenResponseDto;
-import de.aittr.project_wishlist.security.sec_service.AuthService;
+import de.ait.project_KidVenture.entity.User;
+import de.ait.project_KidVenture.repository.UserRepository;
+import de.ait.project_KidVenture.security.sec_dto.RefreshRequestDto;
+import de.ait.project_KidVenture.security.sec_dto.TokenResponseDto;
+import de.ait.project_KidVenture.security.sec_service.AuthService;
+import jakarta.security.auth.message.AuthException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +28,9 @@ public class AuthController {
         this.userRepo = userRepo;
     }
 
+
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) {
+    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) throws AuthException {
 
         TokenResponseDto tokenDto = service.login(user);
 

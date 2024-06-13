@@ -1,11 +1,10 @@
 package de.ait.project_KidVenture.security.sec_service;
 
-import de.aittr.project_wishlist.domain.entity.User;
-import de.aittr.project_wishlist.exceptions.AuthException;
-import de.aittr.project_wishlist.security.sec_dto.TokenResponseDto;
-import de.aittr.project_wishlist.service.interfaces.UserService;
-import de.aittr.project_wishlist.service.mapping.UserMappingService;
+import de.ait.project_KidVenture.entity.User;
+import de.ait.project_KidVenture.security.sec_dto.TokenResponseDto;
+import de.ait.project_KidVenture.services.UserService;
 import io.jsonwebtoken.Claims;
+import jakarta.security.auth.message.AuthException;
 import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,14 +19,14 @@ public class AuthService {
     private final TokenService tokenService;
     private final Map<String, String> refreshStorage;
     private final BCryptPasswordEncoder encoder;
-    private final UserMappingService userMappingService;
 
-    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService, UserMappingService userMappingService) {
+
+    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService) {
         this.encoder = encoder;
         this.tokenService = tokenService;
         this.userService = userService;
         this.refreshStorage = new HashMap<>();
-        this.userMappingService = userMappingService;
+
     }
 
     public TokenResponseDto login(@NonNull User inboundUser) throws AuthException {
@@ -46,7 +45,7 @@ public class AuthService {
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
             refreshStorage.put(username, refreshToken);
-            return new TokenResponseDto(accessToken, refreshToken, userMappingService.mapEntityToDto(foundUser));
+            return new TokenResponseDto(accessToken, refreshToken, foundUser);
         } else {
             throw new AuthException("Password is incorrect");
         }

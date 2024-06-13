@@ -12,5 +12,6 @@
     <include file="add_foreign_key_to_leaderboard.xml" relativeToChangelogFile="true"/>
     <include file="add_foreign_key_to_user_progress.xml" relativeToChangelogFile="true"/>
     <include file="add_foreign_key_to_game_session.xml" relativeToChangelogFile="true"/>
+    <include file="create-foreign-keys-user-role.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

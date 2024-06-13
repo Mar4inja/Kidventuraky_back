@@ -12,5 +12,7 @@
     <include file="create-table-game-session.xml" relativeToChangelogFile="true"/>
     <include file="create-table-user.xml" relativeToChangelogFile="true"/>
     <include file="create-table-leaderboard.xml" relativeToChangelogFile="true"/>
+    <include file="add-table-role.xml" relativeToChangelogFile="true"/>
+    <include file="add-table-user-role.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

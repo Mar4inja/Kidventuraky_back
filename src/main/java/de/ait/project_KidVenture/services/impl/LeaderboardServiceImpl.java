@@ -130,7 +130,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
             // Piekļūstiet lietotāja informācijai, lai iegūtu vārdu un uzvārdu
             User user = userRepository.findById(entry.getKey()).orElse(null);
             if (user != null) {
-                String userName = user.getName();
+                String userName = user.getFirstName();
                 String userEntry = String.format("%d. %s --> %d", rank++, userName, entry.getValue());
                 entries.add(userEntry);
             }

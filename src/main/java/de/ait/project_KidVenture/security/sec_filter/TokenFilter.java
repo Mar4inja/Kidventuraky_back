@@ -1,7 +1,7 @@
 package de.ait.project_KidVenture.security.sec_filter;
 
-import de.aittr.project_wishlist.security.AuthInfo;
-import de.aittr.project_wishlist.security.sec_service.TokenService;
+import de.ait.project_KidVenture.security.AuthInfo;
+import de.ait.project_KidVenture.security.sec_service.TokenService;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

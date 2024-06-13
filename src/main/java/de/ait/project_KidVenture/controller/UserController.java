@@ -1,10 +1,10 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.User;
-import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +36,14 @@ public class UserController {
     @Operation(summary = "Save user")
     @PostMapping("/register")
     public ResponseEntity<User> save(@RequestBody User user) {
-        User savedUser = userService.save(user);
-        return ResponseEntity.ok(savedUser);
+        try {
+            User savedUser = userService.saveUser(user);
+            return ResponseEntity.ok(savedUser);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null); // или другой статус в зависимости от ошибки
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // конфликт, например, уже существующий email
+        }
     }
 
     @Operation(summary = "Update data")
@@ -50,7 +56,7 @@ public class UserController {
     @Operation(summary = "Delete by ID")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<User> deleteById(@PathVariable Long id) {
-        userService.delete(id);
+        userService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }
