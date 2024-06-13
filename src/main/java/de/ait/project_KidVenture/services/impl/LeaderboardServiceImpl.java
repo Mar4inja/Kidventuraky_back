@@ -7,14 +7,14 @@ import de.ait.project_KidVenture.repository.LeaderboardRepository;
 import de.ait.project_KidVenture.repository.TaskRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.LeaderboardService;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -25,42 +25,39 @@ public class LeaderboardServiceImpl implements LeaderboardService {
     private final TaskRepository taskRepository;
 
     @Override
-    public Leaderboard createLeaderboardEntry(Long taskId, Long userId) {
-        // Atrodam uzdevumu un lietotāju pēc to ID
-        Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new EntityNotFoundException("Task not found"));
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-
-        // Izveidojam jaunu vadības tabulas ierakstu ar saistīto uzdevumu un lietotāju
+    public Leaderboard createLeaderboard(Long taskId, Long userId, int score) {
         Leaderboard leaderboard = new Leaderboard();
+
+        // Iestatiet task_id un user_id, lai ierakstītu atbilstošos ierakstus
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + taskId));
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));
         leaderboard.setTask(task);
         leaderboard.setUser(user);
 
-        // Iestatiet jebkuru noklusējuma vērtību jūsu ierakstam, piemēram, rangu un rezultātu
-        leaderboard.setRank(1);
-        leaderboard.setScore(0);
+        // Iegūstiet visus lietotājus, sakārtojot tos pēc rezultātiem dilstošā secībā
+        List<User> usersByScore = userRepository.findAllByOrderByScoreDesc();
 
-        // Saglabājam jauno ierakstu datu bāzē un atgriežam to
+        // Atrodiet lietotāju rangu un iestatiet to leaderboard ierakstā
+        int rank = findRank(usersByScore, user);
+        leaderboard.setRank(rank);
+
+        // Iestatiet rezultāta vērtību
+        leaderboard.setScore(score);
+
+        // Saglabājiet jauno leaderboard ierakstu un atgrieziet rezultātu
         return leaderboardRepository.save(leaderboard);
     }
 
-
-
-    @Override
-    public Optional<Leaderboard> getLeaderboardEntryById(Long id) {
-        return leaderboardRepository.findById(id);
-    }
-
-    @Override
-    public Leaderboard updateLeaderboardEntry(Long id, Leaderboard leaderboard) {
-        Optional<Leaderboard> existingEntry = leaderboardRepository.findById(id);
-        if (existingEntry.isPresent()) {
-            leaderboard.setId(id);
-            return leaderboardRepository.save(leaderboard);
-        } else {
-            throw new EntityNotFoundException("Leaderboard entry not found");
+    // Metode, kas atrod lietotāja rangu sakārtotajā sarakstā pēc rezultātiem
+    private int findRank(List<User> usersByScore, User user) {
+        int rank = 1;
+        for (User u : usersByScore) {
+            if (u.equals(user)) {
+                return rank; // Ja atrodam lietotāju, atgriežam viņa rangu
+            }
+            rank++;
         }
+        return rank; // Ja lietotājs nav atrasts, atgriežam viņa aizliegto rangu
     }
 
     @Override
@@ -68,50 +65,76 @@ public class LeaderboardServiceImpl implements LeaderboardService {
         if (leaderboardRepository.existsById(id)) {
             leaderboardRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Leaderboard entry not found");
+            throw new EntityNotFoundException("Entry with id: " + id + "is not found!!");
         }
     }
 
-    @Override
-    public Optional<Leaderboard> getUserRankForTask(Long userId, Long taskId) {
-        return leaderboardRepository.findByUserIdAndTaskId(userId, taskId);
-    }
 
     @Override
-    public List<Leaderboard> getTopUsersForTask(Long taskId, Long userId) {
-        Optional<Leaderboard> leaderboard = leaderboardRepository.findByUserIdAndTaskId(userId, taskId);
-        if (leaderboard.isPresent()) {
-            return leaderboardRepository.findTopByTaskIdOrderByRankAsc(taskId, PageRequest.of(0, 10));
-        } else {
-            return Collections.emptyList();
-        }
-    }
-
-    @Override
-    public Leaderboard updateUserRankAndScore(Long userId, Long taskId, int rank, int score) {
-        return null; // Šī metode vēl nav implementēta
-    }
-
-    @Override
-    public List<Leaderboard> getAllEntriesForTask(Long taskId) {
-        return leaderboardRepository.findAllByTaskId(taskId);
-    }
-
-    public Leaderboard addUserToLeaderboard(Long leaderboardId, Long userId) {
-        Leaderboard leaderboard = leaderboardRepository.findById(leaderboardId)
-                .orElseThrow(() -> new EntityNotFoundException("Leaderboard not found"));
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-        leaderboard.setUser(user);
-        return leaderboardRepository.save(leaderboard);
-    }
-
-    public Leaderboard addTaskToLeaderboard(Long leaderboardId, Long taskId) {
-        Leaderboard leaderboard = leaderboardRepository.findById(leaderboardId)
-                .orElseThrow(() -> new EntityNotFoundException("Leaderboard not found"));
+    public Leaderboard updateLeaderboardWithResults(Long taskId, Long userId, int score) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new EntityNotFoundException("Task not found"));
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        Leaderboard leaderboard = leaderboardRepository.findByTaskIdAndUserId(taskId, userId)
+                .orElse(new Leaderboard());
+
         leaderboard.setTask(task);
-        return leaderboardRepository.save(leaderboard);
+        leaderboard.setUser(user);
+        leaderboard.setScore(score);
+        leaderboardRepository.save(leaderboard);
+
+        // Update leaderboard rankings based on scores
+        updateRankings(taskId);
+
+        return leaderboard;
+    }
+
+    private void updateRankings(Long taskId) {
+        List<Leaderboard> leaderboards = leaderboardRepository.findByTaskIdOrderByScoreDesc(taskId);
+        int rank = 1;
+        for (Leaderboard leaderboard : leaderboards) {
+            leaderboard.setRank(rank++);
+            leaderboardRepository.save(leaderboard);
+        }
+    }
+
+    @Override
+    public List<String> getAllEntries() {
+        List<Leaderboard> leaderboardEntries = leaderboardRepository.findAll();
+        Map<Long, Integer> userScores = new HashMap<>();
+        List<String> entries = new ArrayList<>();
+
+        for (Leaderboard entry : leaderboardEntries) {
+            Long userId = entry.getUser().getId();
+            Integer score = entry.getScore();
+            if (userScores.containsKey(userId)) {
+                Integer existingScore = userScores.get(userId);
+                if (score > existingScore) {
+                    userScores.put(userId, score);
+                }
+            } else {
+                userScores.put(userId, score);
+            }
+        }
+
+        List<Map.Entry<Long, Integer>> sortedEntries = userScores.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
+        int rank = 1;
+        for (Map.Entry<Long, Integer> entry : sortedEntries) {
+            // Piekļūstiet lietotāja informācijai, lai iegūtu vārdu un uzvārdu
+            User user = userRepository.findById(entry.getKey()).orElse(null);
+            if (user != null) {
+                String userName = user.getName();
+                String userEntry = String.format("%d. %s --> %d", rank++, userName, entry.getValue());
+                entries.add(userEntry);
+            }
+        }
+        return entries;
     }
 }

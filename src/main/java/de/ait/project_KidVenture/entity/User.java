@@ -42,4 +42,7 @@ public class User {
     // Piešķirtās balvas
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reward> reward = new ArrayList<>();
+
+    @Column(name = "score")
+    private int score;
 }

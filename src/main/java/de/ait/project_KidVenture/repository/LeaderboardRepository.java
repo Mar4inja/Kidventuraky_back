@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LeaderboardRepository extends JpaRepository<Leaderboard, Long> {
-    Optional<Leaderboard> findByUserIdAndTaskId(Long userId, Long taskId);
 
-    List<Leaderboard> findTopByTaskIdOrderByRankAsc(Long taskId, PageRequest of);
+    Optional<Leaderboard> findByTaskIdAndUserId(Long taskId, Long userId);
 
-    List<Leaderboard> findAllByTaskId(Long taskId);
+    List<Leaderboard> findByTaskIdOrderByScoreDesc(Long taskId);
 }
