@@ -1,4 +1,6 @@
 package de.ait.project_KidVenture.security.sec_controller;
+
+
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.security.sec_dto.RefreshRequestDto;
@@ -7,7 +9,6 @@ import de.ait.project_KidVenture.security.sec_service.AuthService;
 import jakarta.security.auth.message.AuthException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,16 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/users")
-@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService service;
-    private final UserRepository userRepository;
+    private final UserRepository userRepo;
+
+    public AuthController(AuthService service, UserRepository userRepo) {
+        this.service = service;
+        this.userRepo = userRepo;
+    }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) throws AuthException {
+    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) {
 
-        TokenResponseDto tokenDto = service.login(user);
+        TokenResponseDto tokenDto = null;
+        try {
+            tokenDto = service.login(user);
+        } catch (AuthException e) {
+            throw new RuntimeException(e);
+        }
 
         Cookie accessTokenCookie = new Cookie("Access-Token", tokenDto.getAccessToken());
         accessTokenCookie.setPath("/");

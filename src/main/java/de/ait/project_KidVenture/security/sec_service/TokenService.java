@@ -1,4 +1,5 @@
 package de.ait.project_KidVenture.security.sec_service;
+
 import de.ait.project_KidVenture.entity.Role;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.RoleRepository;

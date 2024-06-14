@@ -1,52 +1,67 @@
 package de.ait.project_KidVenture.services.impl;
 
+import de.ait.project_KidVenture.entity.Role;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.exceptions.UserIsNotExistException;
 import de.ait.project_KidVenture.repository.RoleRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
-
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
     public User saveUser(User user) {
-
+        // Pārbauda, vai lietotāja ID ir null, lai izvairītos no nevēlamas uzstādīšanas
         user.setId(null);
 
+        // Validācija, vai visi obligātie lauki ir aizpildīti
         if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
                 user.getLastName() == null || user.getLastName().isEmpty() ||
                 user.getEmail() == null || user.getEmail().isEmpty() ||
                 user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Fields first name, e-mail and password are required");
+            throw new IllegalArgumentException("Fields first name, last name, email, and password are required");
         }
 
+        // Pārbauda, vai lietotājs ar norādīto e-pasta adresi jau pastāv
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new RuntimeException("User with email " + user.getEmail() + " already exists");
         }
 
-        user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
+        // Uzstāda šifrētu paroli
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Pievieno lietotājam noklusējuma lomu "ROLE_USER"
+        Role userRole = roleRepository.findByTitle("ROLE_USER");
+        if (userRole == null) {
+            throw new RuntimeException("Role ROLE_USER not found in the database");
+        }
+        user.setRoles(Collections.singleton(userRole));
+
+        // Uzstāda aktīvo statusu
         user.setActive(true);
+
+        // Saglabā lietotāju datubāzē
         User savedUser = userRepository.save(user);
-//        emailService.sendConfirmationEmail(user);
-
-        return savedUser;
+        return savedUser; // Izmanto mapēšanas servisu, lai konvertētu uz UserDto
     }
-
 
     @Override
     public List<User> getAll() {
@@ -55,18 +70,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User update(Long id, User updatedUser) {
-        // Pārbauda, vai bērns ar norādīto ID eksistē datu bāzē
+        // Pārbauda, vai lietotājs ar norādīto ID eksistē datubāzē
         Optional<User> existingUserOptional = userRepository.findById(id);
 
         if (existingUserOptional.isPresent()) {
-            // Atjauno bērna datus ar jaunajiem datiem
+            // Atjauno lietotāja datus ar jauniem datiem
             User existingUser = existingUserOptional.get();
             existingUser.setFirstName(updatedUser.getFirstName());
-            existingUser.setAge(updatedUser.getAge());
-            // Saglabā atjaunināto bērnu un atgriež to
+            existingUser.setAge(updatedUser.getAge()); // If age exists in User entity
+            // Saglabā atjaunināto lietotāju un atgriež to
             return userRepository.save(existingUser);
         } else {
-            // Ja bērns ar norādīto ID netika atrasts, izmet izņēmumu
+            // Ja lietotājs ar norādīto ID netika atrasts, izmet izņēmumu
             throw new IllegalArgumentException("User with ID " + updatedUser.getId() + " not found");
         }
     }
@@ -75,7 +90,7 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Long id) {
         try {
             if (!userRepository.existsById(id)) {
-                throw new UserIsNotExistException("Person with id: " + id + " does not exist");
+                throw new UserIsNotExistException("User with id: " + id + " does not exist");
             }
             userRepository.deleteById(id);
         } catch (UserIsNotExistException e) {
@@ -84,18 +99,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getInfo(User user) {
-        String userName = user.getFirstName();
-        User currentUser = userRepository.findByEmail(userName);
+    public User getUserInfo(Authentication authentication) {
+        String username = authentication.getName();
+        User currentUser = findByEmail(username);
 
         if (currentUser == null) {
-            try {
-                throw new NoSuchFieldException("User is not found");
-            } catch (NoSuchFieldException e) {
-                throw new RuntimeException(e);
-            }
+            throw new NoSuchElementException("User not found");
         }
-        return currentUser;
+
+        return (currentUser);
     }
 
     @Override
@@ -105,10 +117,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByEmail(String username) {
-        if (userRepository.findByEmail(username) == null) {
-            return null;
+        logger.info("Searching for user with email: {}", username);
+        User user = userRepository.findByEmail(username);
+        if (user == null) {
+            logger.warn("User with email {} not found", username);
         } else {
-            return userRepository.findByEmail(username);
+            logger.info("User with email {} found", username);
         }
+        return user;
     }
 }

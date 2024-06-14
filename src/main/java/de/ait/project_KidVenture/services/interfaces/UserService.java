@@ -2,23 +2,24 @@ package de.ait.project_KidVenture.services.interfaces;
 
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.entity.dto.UserDto;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
 
-    UserDto saveUser(UserDto userDto);
+    User saveUser(User user);
 
-    List<UserDto> getAll();
+    List<User> getAll();
 
-    UserDto update(Long id, User updatetedUser);
+    User update(Long id, User updatetedUser);
 
     void deleteById(Long id);
 
-    UserDto getInfo(UserDto userDto);
+    User getUserInfo(Authentication authentication);
 
-    Optional<UserDto> findById(Long id);
+    Optional<User> findById(Long id);
 
-    UserDto findByEmail(String username);
+    User findByEmail(String username);
 }

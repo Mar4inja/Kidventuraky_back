@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 @RequestMapping("api/users")
 @RequiredArgsConstructor
 public class UserController {
-
 
     private final UserService userService;
 
@@ -55,7 +53,7 @@ public class UserController {
 
     @Operation(summary = "Delete by ID")
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<User> deleteById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         userService.deleteById(id);
         return ResponseEntity.ok().build();
     }

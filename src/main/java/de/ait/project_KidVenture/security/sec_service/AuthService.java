@@ -1,10 +1,12 @@
 package de.ait.project_KidVenture.security.sec_service;
+
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.security.sec_dto.TokenResponseDto;
 import de.ait.project_KidVenture.services.interfaces.UserService;
-import de.ait.project_KidVenture.services.mapping.UserMappingService;
 import io.jsonwebtoken.Claims;
 import jakarta.security.auth.message.AuthException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,29 +17,32 @@ import java.util.Map;
 @Service
 public class AuthService {
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
+
     private final UserService userService;
     private final TokenService tokenService;
     private final Map<String, String> refreshStorage;
     private final BCryptPasswordEncoder encoder;
-    private final UserMappingService userMappingService;
 
-    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService, UserMappingService userMappingService) {
+    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService) {
         this.encoder = encoder;
         this.tokenService = tokenService;
         this.userService = userService;
         this.refreshStorage = new HashMap<>();
-        this.userMappingService = userMappingService;
     }
 
     public TokenResponseDto login(@NonNull User inboundUser) throws AuthException {
         String username = inboundUser.getEmail();
+        logger.info("Attempting to log in user: {}", username);
         User foundUser = userService.findByEmail(username);
 
         if (foundUser == null) {
+            logger.warn("User not found: {}", username);
             throw new AuthException("User not found");
         }
 
         if (!isRegistrationConfirmed(foundUser)) {
+            logger.warn("E-mail confirmation not completed for user: {}", username);
             throw new AuthException("E-mail confirmation was not completed");
         }
 
@@ -45,13 +50,16 @@ public class AuthService {
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
             refreshStorage.put(username, refreshToken);
-            return new TokenResponseDto(accessToken, refreshToken, userMappingService.mapEntityToDto(foundUser));
+            logger.info("Login successful for user: {}", username);
+            return new TokenResponseDto(accessToken, refreshToken, foundUser);
         } else {
+            logger.warn("Incorrect password for user: {}", username);
             throw new AuthException("Password is incorrect");
         }
     }
 
     public TokenResponseDto getAccessToken(@NonNull String inboundRefreshToken) {
+        logger.info("Generating access token using refresh token");
         Claims refreshClaims = tokenService.getRefreshClaims(inboundRefreshToken);
         String username = refreshClaims.getSubject();
         String savedRefreshToken = refreshStorage.get(username);
@@ -59,15 +67,18 @@ public class AuthService {
         if (inboundRefreshToken.equals(savedRefreshToken)) {
             User user = userService.findByEmail(username);
             String accessToken = tokenService.generateAccessToken(user);
+            logger.info("Access token generated successfully for user: {}", username);
             return new TokenResponseDto(accessToken, null);
         }
+        logger.warn("Invalid refresh token for user: {}", username);
         return new TokenResponseDto(null, null);
     }
 
-
     private boolean isRegistrationConfirmed(User user) {
-        return user.isActive();
+        boolean isConfirmed = user.isActive();
+        if (!isConfirmed) {
+            logger.warn("Registration not confirmed for user: {}", user.getEmail());
+        }
+        return isConfirmed;
     }
-
-
 }
