@@ -1,10 +1,9 @@
 package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.Reward;
-import de.ait.project_KidVenture.entity.Task;
 import de.ait.project_KidVenture.exceptions.EntityAlreadyExistsException;
 import de.ait.project_KidVenture.repository.RewardRepository;
-import de.ait.project_KidVenture.services.RewardService;
+import de.ait.project_KidVenture.services.interfaces.RewardService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

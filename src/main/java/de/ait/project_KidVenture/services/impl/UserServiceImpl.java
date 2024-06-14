@@ -4,7 +4,7 @@ import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.exceptions.UserIsNotExistException;
 import de.ait.project_KidVenture.repository.RoleRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
-import de.ait.project_KidVenture.services.UserService;
+import de.ait.project_KidVenture.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

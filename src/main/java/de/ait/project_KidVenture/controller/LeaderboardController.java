@@ -1,9 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.Leaderboard;
-import de.ait.project_KidVenture.services.LeaderboardService;
-import de.ait.project_KidVenture.services.TaskService;
-import de.ait.project_KidVenture.services.UserService;
+import de.ait.project_KidVenture.services.interfaces.LeaderboardService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.Reward;
-import de.ait.project_KidVenture.services.RewardService;
+import de.ait.project_KidVenture.services.interfaces.RewardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

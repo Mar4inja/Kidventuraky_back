@@ -6,7 +6,7 @@ import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.GameSessionRepository;
 import de.ait.project_KidVenture.repository.TaskRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
-import de.ait.project_KidVenture.services.GameSessionService;
+import de.ait.project_KidVenture.services.interfaces.GameSessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

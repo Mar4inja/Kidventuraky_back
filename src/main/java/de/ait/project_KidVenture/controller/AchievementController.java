@@ -1,7 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.Achievement;
-import de.ait.project_KidVenture.services.AchievementService;
+import de.ait.project_KidVenture.services.interfaces.AchievementService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

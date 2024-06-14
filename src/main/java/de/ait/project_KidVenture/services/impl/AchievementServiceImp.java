@@ -2,7 +2,7 @@ package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.Achievement;
 import de.ait.project_KidVenture.repository.AchievementRepository;
-import de.ait.project_KidVenture.services.AchievementService;
+import de.ait.project_KidVenture.services.interfaces.AchievementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

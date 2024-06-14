@@ -1,6 +1,4 @@
 package de.ait.project_KidVenture.security;
-
-
 import de.ait.project_KidVenture.entity.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +7,7 @@ import javax.security.auth.Subject;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
+
 
 public class AuthInfo implements Authentication {
 

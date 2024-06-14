@@ -1,7 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.GameSession;
-import de.ait.project_KidVenture.services.GameSessionService;
+import de.ait.project_KidVenture.services.interfaces.GameSessionService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

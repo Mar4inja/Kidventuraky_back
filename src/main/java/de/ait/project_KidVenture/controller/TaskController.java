@@ -1,7 +1,7 @@
 package de.ait.project_KidVenture.controller;
 
 import de.ait.project_KidVenture.entity.Task;
-import de.ait.project_KidVenture.services.TaskService;
+import de.ait.project_KidVenture.services.interfaces.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;

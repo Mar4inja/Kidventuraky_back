@@ -2,10 +2,8 @@ package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.Role;
 import de.ait.project_KidVenture.repository.RoleRepository;
-import de.ait.project_KidVenture.services.RoleService;
+import de.ait.project_KidVenture.services.interfaces.RoleService;
 import lombok.AllArgsConstructor;
-
-import javax.management.relation.RoleNotFoundException;
 
 @AllArgsConstructor
 public class RoleServiceImpl implements RoleService {

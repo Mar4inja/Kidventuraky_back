@@ -1,8 +1,8 @@
 package de.ait.project_KidVenture.security.sec_service;
-
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.security.sec_dto.TokenResponseDto;
-import de.ait.project_KidVenture.services.UserService;
+import de.ait.project_KidVenture.services.interfaces.UserService;
+import de.ait.project_KidVenture.services.mapping.UserMappingService;
 import io.jsonwebtoken.Claims;
 import jakarta.security.auth.message.AuthException;
 import org.springframework.lang.NonNull;
@@ -19,14 +19,14 @@ public class AuthService {
     private final TokenService tokenService;
     private final Map<String, String> refreshStorage;
     private final BCryptPasswordEncoder encoder;
+    private final UserMappingService userMappingService;
 
-
-    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService) {
+    public AuthService(BCryptPasswordEncoder encoder, TokenService tokenService, UserService userService, UserMappingService userMappingService) {
         this.encoder = encoder;
         this.tokenService = tokenService;
         this.userService = userService;
         this.refreshStorage = new HashMap<>();
-
+        this.userMappingService = userMappingService;
     }
 
     public TokenResponseDto login(@NonNull User inboundUser) throws AuthException {
@@ -45,7 +45,7 @@ public class AuthService {
             String accessToken = tokenService.generateAccessToken(foundUser);
             String refreshToken = tokenService.generateRefreshToken(foundUser);
             refreshStorage.put(username, refreshToken);
-            return new TokenResponseDto(accessToken, refreshToken, foundUser);
+            return new TokenResponseDto(accessToken, refreshToken, userMappingService.mapEntityToDto(foundUser));
         } else {
             throw new AuthException("Password is incorrect");
         }

@@ -1,5 +1,4 @@
 package de.ait.project_KidVenture.security.sec_controller;
-
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.security.sec_dto.RefreshRequestDto;
@@ -8,7 +7,7 @@ import de.ait.project_KidVenture.security.sec_service.AuthService;
 import jakarta.security.auth.message.AuthException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.SneakyThrows;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,16 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/users")
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService service;
-    private final UserRepository userRepo;
-
-    public AuthController(AuthService service, UserRepository userRepo) {
-        this.service = service;
-        this.userRepo = userRepo;
-    }
-
+    private final UserRepository userRepository;
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) throws AuthException {

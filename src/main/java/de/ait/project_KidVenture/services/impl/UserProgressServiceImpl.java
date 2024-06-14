@@ -4,7 +4,7 @@ import de.ait.project_KidVenture.entity.Task;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.entity.UserProgress;
 import de.ait.project_KidVenture.repository.UserProgressRepository;
-import de.ait.project_KidVenture.services.UserProgressService;
+import de.ait.project_KidVenture.services.interfaces.UserProgressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

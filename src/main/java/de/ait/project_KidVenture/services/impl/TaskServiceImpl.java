@@ -2,7 +2,7 @@ package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.Task;
 import de.ait.project_KidVenture.repository.TaskRepository;
-import de.ait.project_KidVenture.services.TaskService;
+import de.ait.project_KidVenture.services.interfaces.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

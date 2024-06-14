@@ -6,7 +6,7 @@ import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.LeaderboardRepository;
 import de.ait.project_KidVenture.repository.TaskRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
-import de.ait.project_KidVenture.services.LeaderboardService;
+import de.ait.project_KidVenture.services.interfaces.LeaderboardService;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
