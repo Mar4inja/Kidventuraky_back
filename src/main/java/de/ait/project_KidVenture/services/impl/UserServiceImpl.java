@@ -12,12 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -25,45 +24,49 @@ public class UserServiceImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder encoder;
 
     @Override
     public User saveUser(User user) {
-        // Pārbauda, vai lietotāja ID ir null, lai izvairītos no nevēlamas uzstādīšanas
         user.setId(null);
+            // Устанавливаем ID в null, чтобы гарантировать создание нового пользователя
+            user.setId(null);
 
-        // Validācija, vai visi obligātie lauki ir aizpildīti
-        if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
-                user.getLastName() == null || user.getLastName().isEmpty() ||
-                user.getEmail() == null || user.getEmail().isEmpty() ||
-                user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Fields first name, last name, email, and password are required");
+            // Проверяем, что все обязательные поля заполнены
+            if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
+                    user.getLastName() == null || user.getLastName().isEmpty() ||
+                    user.getEmail() == null || user.getEmail().isEmpty() ||
+                    user.getPassword() == null || user.getPassword().isEmpty()) {
+                throw new IllegalArgumentException("Поля имя, фамилия, email и пароль обязательны для заполнения");
+            }
+
+            // Проверяем, что пользователь с данным email еще не существует
+            if (userRepository.findByEmail(user.getEmail()) != null) {
+                throw new IllegalArgumentException("Пользователь с email " + user.getEmail() + " уже существует");
+            }
+
+            // Устанавливаем роль по умолчанию "ROLE_USER"
+            user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
+
+            // Шифруем пароль пользователя
+            user.setPassword(encoder.encode(user.getPassword()));
+
+            // Устанавливаем статус пользователя как активный
+            user.setActive(true);
+
+            // Сохраняем пользователя в базе данных
+            User savedUser = userRepository.save(user);
+
+            // Логируем успешную регистрацию пользователя
+            logger.info("Пользователь успешно зарегистрирован с email: " + user.getEmail());
+
+            // Возвращаем сохраненного пользователя
+            return savedUser;
         }
 
-        // Pārbauda, vai lietotājs ar norādīto e-pasta adresi jau pastāv
-        if (userRepository.findByEmail(user.getEmail()) != null) {
-            throw new RuntimeException("User with email " + user.getEmail() + " already exists");
-        }
 
-        // Uzstāda šifrētu paroli
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Pievieno lietotājam noklusējuma lomu "ROLE_USER"
-        Role userRole = roleRepository.findByTitle("ROLE_USER");
-        if (userRole == null) {
-            throw new RuntimeException("Role ROLE_USER not found in the database");
-        }
-        user.setRoles(Collections.singleton(userRole));
-
-        // Uzstāda aktīvo statusu
-        user.setActive(true);
-
-        // Saglabā lietotāju datubāzē
-        User savedUser = userRepository.save(user);
-        return savedUser; // Izmanto mapēšanas servisu, lai konvertētu uz UserDto
-    }
-
-    @Override
+        @Override
     public List<User> getAll() {
         return userRepository.findAll();
     }

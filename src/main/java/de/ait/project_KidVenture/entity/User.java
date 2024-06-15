@@ -1,12 +1,12 @@
 package de.ait.project_KidVenture.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,7 +20,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 public class User implements UserDetails {
 
     @Id
@@ -44,7 +43,8 @@ public class User implements UserDetails {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @Column(name = "password", nullable = false, unique = true)
+
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "registration_date", nullable = false)
@@ -52,7 +52,7 @@ public class User implements UserDetails {
 
     @Column(name = "is_active")
     private boolean isActive;
-    // Piešķirtās balvas
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reward> reward = new ArrayList<>();
 
@@ -71,21 +71,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return true; // Можно добавить логику проверки на истекший срок учетной записи
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return true; // Можно добавить логику проверки на блокировку учетной записи
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return true; // Можно добавить логику проверки на истекшие учетные данные
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isActive; // Можно добавить дополнительную логику активации учетной записи
     }
 }

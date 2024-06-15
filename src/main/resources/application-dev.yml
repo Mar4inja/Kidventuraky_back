@@ -35,5 +35,6 @@ logging:
   file:
     name: logs/log.log
   level:
-    root: info
+    root: debug
+
 

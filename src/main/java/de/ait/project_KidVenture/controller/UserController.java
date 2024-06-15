@@ -4,6 +4,7 @@ import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.services.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,18 +32,13 @@ public class UserController {
         return ResponseEntity.ok(userInfo);
     }
 
-    @Operation(summary = "Save user")
+    @Operation(summary = "Create new user (Register)")
     @PostMapping("/register")
-    public ResponseEntity<User> save(@RequestBody User user) {
-        try {
-            User savedUser = userService.saveUser(user);
-            return ResponseEntity.ok(savedUser);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null); // или другой статус в зависимости от ошибки
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(null); // конфликт, например, уже существующий email
-        }
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.saveUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
+
 
     @Operation(summary = "Update data")
     @PutMapping("/update/{id}")
