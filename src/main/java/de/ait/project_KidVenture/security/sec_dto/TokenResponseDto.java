@@ -1,12 +1,17 @@
 package de.ait.project_KidVenture.security.sec_dto;
 
-
-
 import de.ait.project_KidVenture.entity.User;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 
-@Data
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 public class TokenResponseDto {
 
     private String accessToken;

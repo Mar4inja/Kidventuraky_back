@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -29,58 +30,65 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         user.setId(null);
-            // Устанавливаем ID в null, чтобы гарантировать создание нового пользователя
-            user.setId(null);
+        // Устанавливаем ID в null, чтобы гарантировать создание нового пользователя
+        user.setId(null);
 
-            // Проверяем, что все обязательные поля заполнены
-            if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
-                    user.getLastName() == null || user.getLastName().isEmpty() ||
-                    user.getEmail() == null || user.getEmail().isEmpty() ||
-                    user.getPassword() == null || user.getPassword().isEmpty()) {
-                throw new IllegalArgumentException("Поля имя, фамилия, email и пароль обязательны для заполнения");
-            }
-
-            // Проверяем, что пользователь с данным email еще не существует
-            if (userRepository.findByEmail(user.getEmail()) != null) {
-                throw new IllegalArgumentException("Пользователь с email " + user.getEmail() + " уже существует");
-            }
-
-            // Устанавливаем роль по умолчанию "ROLE_USER"
-            user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
-
-            // Шифруем пароль пользователя
-            user.setPassword(encoder.encode(user.getPassword()));
-
-            // Устанавливаем статус пользователя как активный
-            user.setActive(true);
-
-            // Сохраняем пользователя в базе данных
-            User savedUser = userRepository.save(user);
-
-            // Логируем успешную регистрацию пользователя
-            logger.info("Пользователь успешно зарегистрирован с email: " + user.getEmail());
-
-            // Возвращаем сохраненного пользователя
-            return savedUser;
+        // Проверяем, что все обязательные поля заполнены
+        if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
+                user.getLastName() == null || user.getLastName().isEmpty() ||
+                user.getAge() == null || user.getAge() < 0 ||
+                user.getGender() == null || user.getGender().isEmpty() ||
+                user.getEmail() == null || user.getEmail().isEmpty() ||
+                user.getPassword() == null || user.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("Поля имя, фамилия, email и пароль обязательны для заполнения");
         }
 
+        // Проверяем, что пользователь с данным email еще не существует
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
+        }
 
+        // Устанавливаем роль по умолчанию "ROLE_USER"
+        user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
 
-        @Override
+        // Шифруем пароль пользователя
+        user.setPassword(encoder.encode(user.getPassword()));
+
+        // Устанавливаем статус пользователя как активный
+        user.setActive(true);
+
+        // Сохраняем пользователя в базе данных
+        User savedUser = userRepository.save(user);
+
+        // Логируем успешную регистрацию пользователя
+        logger.info("Пользователь успешно зарегистрирован с email: " + user.getEmail());
+
+        // Возвращаем сохраненного пользователя
+        return savedUser;
+    }
+
+    @Override
     public List<User> getAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public User update(Long id, User updatedUser) {
-        // Pārbauda, vai lietotājs ar norādīto ID eksistē datubāzē
-        Optional<User> existingUserOptional = userRepository.findById(id);
+    public User update(Authentication authentication, User updatedUser) {
 
+        User currentUser = findByEmail(authentication.getName());
+        if (currentUser == null) {
+            throw new IllegalArgumentException("User is not found");
+        }
+
+        Long id = currentUser.getId();
+
+        Optional<User> existingUserOptional = userRepository.findById(id);
         if (existingUserOptional.isPresent()) {
-            // Atjauno lietotāja datus ar jauniem datiem
             User existingUser = existingUserOptional.get();
             existingUser.setFirstName(updatedUser.getFirstName());
-            existingUser.setAge(updatedUser.getAge()); // If age exists in User entity
+            existingUser.setLastName(updatedUser.getLastName());
+            existingUser.setAge(updatedUser.getAge());
+            existingUser.setGender(updatedUser.getGender());
             // Saglabā atjaunināto lietotāju un atgriež to
             return userRepository.save(existingUser);
         } else {

@@ -19,6 +19,9 @@
             <column name="age" type="VARCHAR(10)">
                 <constraints nullable="true"/>
             </column>
+            <column name="gender" type="VARCHAR(10)">
+                <constraints nullable="true"/>
+            </column>
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>

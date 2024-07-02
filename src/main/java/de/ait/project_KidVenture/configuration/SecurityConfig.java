@@ -1,5 +1,6 @@
 package de.ait.project_KidVenture.configuration;
 
+
 import de.ait.project_KidVenture.security.sec_filter.TokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,11 +43,10 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/v3/api-docs.yaml")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/swagger-ui.html")).permitAll()
-                        .requestMatchers(HttpMethod.POST,
-                                "/api/users/register",
-                                "/api/users/login",
-                                "/api/users/access",
-                                "/api/users/logout").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/users/register", "/api/users/login", "/api/users/access", "/api/users/logout").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/users/get-photo/**").permitAll() // Atļauj piekļūt attēliem
+                        .requestMatchers(HttpMethod.DELETE, "/api/users/delete-photo").authenticated() // Nepieciešama autorizācija attēlu dzēšanai
+                        .requestMatchers(HttpMethod.POST, "/api/users/upload-photo").authenticated() // Nepieciešama autorizācija attēlu augšupielādei
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)

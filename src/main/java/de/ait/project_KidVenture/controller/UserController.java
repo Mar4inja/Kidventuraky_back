@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,11 +41,10 @@ public class UserController {
     }
 
 
-    @Operation(summary = "Update data")
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateData(@PathVariable Long id, @RequestBody User updatedUser) {
-        User user = userService.update(id, updatedUser);
-        return ResponseEntity.ok(user);
+    @PutMapping("/auth/me")
+    public ResponseEntity<User> updateData(Authentication authentication, @RequestBody User updatedUser) {
+        User user = userService.update(authentication, updatedUser);
+        return ResponseEntity.ok(userService.getUserInfo(authentication));
     }
 
     @Operation(summary = "Delete by ID")

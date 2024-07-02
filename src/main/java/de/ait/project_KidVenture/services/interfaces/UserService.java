@@ -1,9 +1,7 @@
 package de.ait.project_KidVenture.services.interfaces;
 
 import de.ait.project_KidVenture.entity.User;
-import de.ait.project_KidVenture.entity.dto.UserDto;
 import org.springframework.security.core.Authentication;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +11,7 @@ public interface UserService {
 
     List<User> getAll();
 
-    User update(Long id, User updatetedUser);
+    User update(Authentication authentication, User updatetedUser);
 
     void deleteById(Long id);
 

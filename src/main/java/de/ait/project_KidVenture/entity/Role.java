@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
-
-import java.util.Objects;
-
 @Entity
 @Table(name = "role")
 @AllArgsConstructor
@@ -28,4 +25,6 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return title;
     }
+
+
 }

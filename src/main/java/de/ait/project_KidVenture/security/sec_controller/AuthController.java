@@ -1,6 +1,4 @@
 package de.ait.project_KidVenture.security.sec_controller;
-
-
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.security.sec_dto.RefreshRequestDto;
@@ -29,14 +27,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) {
+    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) throws AuthException {
 
-        TokenResponseDto tokenDto = null;
-        try {
-            tokenDto = service.login(user);
-        } catch (AuthException e) {
-            throw new RuntimeException(e);
-        }
+        TokenResponseDto tokenDto = service.login(user);
 
         Cookie accessTokenCookie = new Cookie("Access-Token", tokenDto.getAccessToken());
         accessTokenCookie.setPath("/");
