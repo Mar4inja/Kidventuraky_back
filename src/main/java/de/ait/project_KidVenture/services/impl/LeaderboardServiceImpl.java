@@ -1,10 +1,10 @@
 package de.ait.project_KidVenture.services.impl;
 
+import de.ait.project_KidVenture.entity.Games;
 import de.ait.project_KidVenture.entity.Leaderboard;
-import de.ait.project_KidVenture.entity.Task;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.LeaderboardRepository;
-import de.ait.project_KidVenture.repository.TaskRepository;
+import de.ait.project_KidVenture.repository.GamesRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.interfaces.LeaderboardService;
 
@@ -22,16 +22,16 @@ public class LeaderboardServiceImpl implements LeaderboardService {
 
     private final LeaderboardRepository leaderboardRepository;
     private final UserRepository userRepository;
-    private final TaskRepository taskRepository;
+    private final GamesRepository gamesRepository;
 
     @Override
     public Leaderboard createLeaderboard(Long taskId, Long userId, int score) {
         Leaderboard leaderboard = new Leaderboard();
 
         // Iestatiet task_id un user_id, lai ierakstītu atbilstošos ierakstus
-        Task task = taskRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + taskId));
+        Games games = gamesRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Games not found with id: " + taskId));
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));
-        leaderboard.setTask(task);
+        leaderboard.setGames(games);
         leaderboard.setUser(user);
 
         // Iegūstiet visus lietotājus, sakārtojot tos pēc rezultātiem dilstošā secībā
@@ -72,8 +72,8 @@ public class LeaderboardServiceImpl implements LeaderboardService {
 
     @Override
     public Leaderboard updateLeaderboardWithResults(Long taskId, Long userId, int score) {
-        Task task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new EntityNotFoundException("Task not found"));
+        Games games = gamesRepository.findById(taskId)
+                .orElseThrow(() -> new EntityNotFoundException("Games not found"));
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
@@ -81,7 +81,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
         Leaderboard leaderboard = leaderboardRepository.findByTaskIdAndUserId(taskId, userId)
                 .orElse(new Leaderboard());
 
-        leaderboard.setTask(task);
+        leaderboard.setGames(games);
         leaderboard.setUser(user);
         leaderboard.setScore(score);
         leaderboardRepository.save(leaderboard);

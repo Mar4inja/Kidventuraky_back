@@ -25,7 +25,7 @@ public class UserProgress {
 
     @ManyToOne
     @JoinColumn(name = "task_id", nullable = false)
-    private Task task;
+    private Games games;
 
     @Column(name = "completed_tasks", nullable = false)
     private int completedTasks;

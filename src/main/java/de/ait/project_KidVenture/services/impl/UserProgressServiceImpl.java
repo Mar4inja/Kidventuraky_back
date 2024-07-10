@@ -1,6 +1,6 @@
 package de.ait.project_KidVenture.services.impl;
 
-import de.ait.project_KidVenture.entity.Task;
+import de.ait.project_KidVenture.entity.Games;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.entity.UserProgress;
 import de.ait.project_KidVenture.repository.UserProgressRepository;
@@ -18,10 +18,10 @@ public class UserProgressServiceImpl implements UserProgressService {
     private final UserProgressRepository userProgressRepository;
 
     @Override
-    public UserProgress createUserProgress(User user, Task task) {
+    public UserProgress createUserProgress(User user, Games games) {
         UserProgress progress = UserProgress.builder()
                 .user(user)
-                .task(task)
+                .games(games)
                 .completedTasks(0)
                 .totalScore(0)
                 .progressPercentage(0.0)

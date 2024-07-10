@@ -15,7 +15,7 @@
                 baseTableName="user_progress"
                 baseColumnNames="task_id"
                 constraintName="fk_user_progress_task"
-                referencedTableName="task"
+                referencedTableName="games"
                 referencedColumnNames="id"/>
     </changeSet>
 

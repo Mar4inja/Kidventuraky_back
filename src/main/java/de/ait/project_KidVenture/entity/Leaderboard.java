@@ -21,7 +21,7 @@ public class Leaderboard {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    private Task task;
+    private Games games;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

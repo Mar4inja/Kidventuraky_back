@@ -9,7 +9,7 @@
                 baseTableName="leaderboard"
                 baseColumnNames="task_id"
                 constraintName="fk_leaderboard_task"
-                referencedTableName="task"
+                referencedTableName="games"
                 referencedColumnNames="id"/>
         <addForeignKeyConstraint
                 baseTableName="leaderboard"

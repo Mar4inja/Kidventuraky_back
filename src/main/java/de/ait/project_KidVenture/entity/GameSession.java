@@ -27,7 +27,7 @@ public class GameSession {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    private Task task;
+    private Games games;
 
     @Column(name = "startTime")
     private LocalDateTime startTime;

@@ -3,9 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="create_table_task" author="martins">
-        <!-- Create the 'task' table -->
-        <createTable tableName="task">
+    <changeSet id="create_table_game" author="martins">
+        <!-- Create the 'games' table -->
+        <createTable tableName="games">
             <!-- Define columns -->
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>

@@ -5,7 +5,7 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="add_task_content_column_to_task" author="martins">
-        <addColumn tableName="task">
+        <addColumn tableName="games">
             <column name="task_content" type="TEXT">
                 <constraints nullable="true"/>
             </column>

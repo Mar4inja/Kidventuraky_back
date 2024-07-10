@@ -1,6 +1,8 @@
 package de.ait.project_KidVenture.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,21 +22,38 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NotNull
+    @Schema(description = "user ID", example = "1")
     private Long id;
 
     @Column(name = "first_name", nullable = false)
+    @Size(max = 30, message = "Max 30 symbols")
+    @Pattern(regexp = "[a-zA-Z]+", message = "First name must contain only letters")
+    @Schema(description = "User firstName", example = "James")
     private String firstName;
 
     @Column(name = "last_name")
+    @Size(max = 30, message = "Max 30 symbols")
+    @Pattern(regexp = "[a-zA-Z]+", message = "First name must contain only letters")
+    @Schema(description = "User firstName", example = "James")
     private String lastName;
 
     @Column(name = "age", nullable = false)
+    @NotBlank(message = "Required")
+    @Pattern(regexp = "^[0-9]{1,3}$", message = "Age must be a number between 0 and 120")
+    @Schema(description = "Users age", example = "12")
     private Integer age;
 
     @Column(name = "gender", nullable = false)
+    @NotBlank(message = "Required")
+    @Schema(description = "Users gender", example = "Male/Female")
     private String gender;
 
     @Column(name = "email", nullable = false, unique = true)
+    @NotBlank(message = "Required")
+    @Size(max = 30, message = "Max 30 symbols")
+    @Email(message = "Invalid email format!")
+    @Schema(description = "User email", example = "may@gmail.com")
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -42,9 +61,14 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @Column(name = "password", nullable = false)
+    @NotBlank(message = "Required")
+    @Size(min = 60, max = 60)
+    @Schema(description = "User password", example = "Password12#")
     private String password;
 
     @Column(name = "registration_date", nullable = false)
+    @NotNull(message = "Registration date must not be null")
+    @PastOrPresent(message = "Registration date must be in the past or present")
     private LocalDate registrationDate;
 
     @Column(name = "is_active")
@@ -54,6 +78,9 @@ public class User implements UserDetails {
     private List<Reward> reward = new ArrayList<>();
 
     @Column(name = "score")
+    @NotNull(message = "Score must not be null")
+    @Min(value = 0, message = "Score must be at least 0")
+    @Max(value = 100, message = "Score must be at most 100")
     private int score;
 
     @Override

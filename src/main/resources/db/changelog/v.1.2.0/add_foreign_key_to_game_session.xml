@@ -15,7 +15,7 @@
                 baseTableName="game_session"
                 baseColumnNames="task_id"
                 constraintName="fk_game_session_task"
-                referencedTableName="task"
+                referencedTableName="games"
                 referencedColumnNames="id"/>
     </changeSet>
 

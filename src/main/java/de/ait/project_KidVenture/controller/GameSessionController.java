@@ -29,7 +29,7 @@ public class GameSessionController {
         return ResponseEntity.ok(gameSessionService.getGameSessionsByUserId(userId));
     }
 
-    @Operation(summary = "Find game session by task ID")
+    @Operation(summary = "Find game session by games ID")
     @GetMapping("/task/{taskId}")
     public ResponseEntity<List<GameSession>> findGameSessionByTaskId(@PathVariable Long taskId) {
         return ResponseEntity.ok(gameSessionService.getGameSessionsByTaskId(taskId));

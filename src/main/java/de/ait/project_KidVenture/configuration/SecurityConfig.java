@@ -44,9 +44,7 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/swagger-ui.html")).permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/register", "/api/users/login", "/api/users/access", "/api/users/logout").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/get-photo/**").permitAll() // Atļauj piekļūt attēliem
-                        .requestMatchers(HttpMethod.DELETE, "/api/users/delete-photo").authenticated() // Nepieciešama autorizācija attēlu dzēšanai
-                        .requestMatchers(HttpMethod.POST, "/api/users/upload-photo").authenticated() // Nepieciešama autorizācija attēlu augšupielādei
+                        .requestMatchers(HttpMethod.POST, "/api/tasks/create").authenticated()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)

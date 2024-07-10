@@ -1,6 +1,5 @@
 package de.ait.project_KidVenture.services.impl;
 
-import de.ait.project_KidVenture.entity.Role;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.exceptions.UserIsNotExistException;
 import de.ait.project_KidVenture.repository.RoleRepository;
@@ -31,8 +30,6 @@ public class UserServiceImpl implements UserService {
     public User saveUser(User user) {
         user.setId(null);
         // Устанавливаем ID в null, чтобы гарантировать создание нового пользователя
-        user.setId(null);
-
         // Проверяем, что все обязательные поля заполнены
         if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
                 user.getLastName() == null || user.getLastName().isEmpty() ||
@@ -47,25 +44,40 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
         }
-
         // Устанавливаем роль по умолчанию "ROLE_USER"
         user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
-
+//        validatePassword(user.getPassword());
         // Шифруем пароль пользователя
         user.setPassword(encoder.encode(user.getPassword()));
-
         // Устанавливаем статус пользователя как активный
         user.setActive(true);
-
         // Сохраняем пользователя в базе данных
         User savedUser = userRepository.save(user);
-
         // Логируем успешную регистрацию пользователя
         logger.info("Пользователь успешно зарегистрирован с email: " + user.getEmail());
-
         // Возвращаем сохраненного пользователя
         return savedUser;
     }
+
+    public void validatePassword(String newPassword) {
+        // Piemēram, līdzīgas validācijas kā 'validatePassword'
+        if (newPassword == null || newPassword.isEmpty()) {
+            throw new IllegalArgumentException("New password cannot be empty");
+        }
+        if (newPassword.length() < 8) {
+            throw new IllegalArgumentException("New password must be at least 8 characters long");
+        }
+        if (!newPassword.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("New password must contain at least one digit");
+        }
+        if (!newPassword.matches(".*[a-zA-Z].*")) {
+            throw new IllegalArgumentException("New password must contain at least one letter");
+        }
+        if (!newPassword.matches(".*[.,?!@#$%^&+=].*")) {
+            throw new IllegalArgumentException("New password must contain at least one special character (.,?!@#$%^&+=)");
+        }
+    }
+
 
     @Override
     public List<User> getAll() {

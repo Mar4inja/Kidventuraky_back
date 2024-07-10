@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "task")
+@Table(name = "games")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Task {
+public class Games {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

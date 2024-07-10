@@ -1,10 +1,10 @@
 package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.GameSession;
-import de.ait.project_KidVenture.entity.Task;
+import de.ait.project_KidVenture.entity.Games;
 import de.ait.project_KidVenture.entity.User;
 import de.ait.project_KidVenture.repository.GameSessionRepository;
-import de.ait.project_KidVenture.repository.TaskRepository;
+import de.ait.project_KidVenture.repository.GamesRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.interfaces.GameSessionService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class GameSessionServiceImp implements GameSessionService {
 
     private final GameSessionRepository gameSessionRepository;
     private final UserRepository userRepository;
-    private final TaskRepository taskRepository;
+    private final GamesRepository gamesRepository;
 
 
     @Override
@@ -29,18 +29,18 @@ public class GameSessionServiceImp implements GameSessionService {
         // Pārbauda, vai lietotājam jau nav sesija ar tādu pašu uzdevumu
         List<GameSession> existingSessions = gameSessionRepository.findByUserAndTask(
                 gameSession.getUser(),
-                gameSession.getTask());
+                gameSession.getGames());
         if (!existingSessions.isEmpty()) {
-            throw new IllegalArgumentException("User already has a session with the same task");
+            throw new IllegalArgumentException("User already has a session with the same games");
         }
 
         User user = userRepository.findById(gameSession.getUser().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id"));
-        Task task = taskRepository.findById(gameSession.getTask().getId())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid task id"));
+        Games games = gamesRepository.findById(gameSession.getGames().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid games id"));
         // Create a new game session
         gameSession.setUser(user);
-        gameSession.setTask(task);
+        gameSession.setGames(games);
         gameSession.setStartTime(gameSession.getStartTime());
         gameSession.setEndTime(gameSession.getEndTime());
         gameSession.setScore(gameSession.getScore());
@@ -104,7 +104,7 @@ public class GameSessionServiceImp implements GameSessionService {
     @Override
     public List<GameSession> getGameSessionsByTaskId(Long taskId) {
         return gameSessionRepository.findAll().stream()
-                .filter(session -> session.getTask() != null && session.getTask().getId().equals(taskId))
+                .filter(session -> session.getGames() != null && session.getGames().getId().equals(taskId))
                 .collect(Collectors.toList());
     }
 }

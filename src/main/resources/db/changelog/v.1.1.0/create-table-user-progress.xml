@@ -14,7 +14,7 @@
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <!-- Foreign key reference to 'task' table -->
+            <!-- Foreign key reference to 'games' table -->
             <column name="task_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>

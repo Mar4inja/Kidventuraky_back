@@ -9,7 +9,7 @@
     </changeSet>
 
     <include file="create-table-reward.xml" relativeToChangelogFile="true"/>
-    <include file="create-table-task.xml" relativeToChangelogFile="true"/>
+    <include file="create-table-games.xml" relativeToChangelogFile="true"/>
     <include file="create-table-user-progress.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
