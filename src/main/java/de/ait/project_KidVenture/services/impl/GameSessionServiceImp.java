@@ -27,7 +27,7 @@ public class GameSessionServiceImp implements GameSessionService {
     public GameSession createGameSession(GameSession gameSession) {
 
         // Pārbauda, vai lietotājam jau nav sesija ar tādu pašu uzdevumu
-        List<GameSession> existingSessions = gameSessionRepository.findByUserAndTask(
+        List<GameSession> existingSessions = gameSessionRepository.findByUserAndGames(
                 gameSession.getUser(),
                 gameSession.getGames());
         if (!existingSessions.isEmpty()) {

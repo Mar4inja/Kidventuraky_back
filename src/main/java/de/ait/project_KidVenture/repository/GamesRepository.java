@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GamesRepository extends JpaRepository<Games, Long> {
 
-   Games findByTitleAndTaskContent(String task, String content);
+   Games findByTitleAndGamesContent(String game, String content);
 }

@@ -20,7 +20,7 @@ public class Leaderboard {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "games_id")
     private Games games;
 
     @ManyToOne

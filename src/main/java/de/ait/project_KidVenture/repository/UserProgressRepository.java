@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface UserProgressRepository extends JpaRepository<UserProgress, Long> {
 
-    Optional<UserProgress> findByUserIdAndTaskId(Long userId, Long taskId);
+    Optional<UserProgress> findByUserIdAndGamesId(Long userId, Long taskId);
 
     List<UserProgress> findAllByUserId(Long userId);
 
-    List<UserProgress> findAllByTaskId(Long taskId);
+    List<UserProgress> findAllByGamesId(Long taskId);
 }

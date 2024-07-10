@@ -78,7 +78,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
-        Leaderboard leaderboard = leaderboardRepository.findByTaskIdAndUserId(taskId, userId)
+        Leaderboard leaderboard = leaderboardRepository.findByGamesIdAndUserId(taskId, userId)
                 .orElse(new Leaderboard());
 
         leaderboard.setGames(games);
@@ -93,7 +93,7 @@ public class LeaderboardServiceImpl implements LeaderboardService {
     }
 
     private void updateRankings(Long taskId) {
-        List<Leaderboard> leaderboards = leaderboardRepository.findByTaskIdOrderByScoreDesc(taskId);
+        List<Leaderboard> leaderboards = leaderboardRepository.findByGamesIdOrderByScoreDesc(taskId);
         int rank = 1;
         for (Leaderboard leaderboard : leaderboards) {
             leaderboard.setRank(rank++);

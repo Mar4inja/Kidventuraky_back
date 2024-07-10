@@ -12,6 +12,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -44,23 +46,22 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
         }
-        // Устанавливаем роль по умолчанию "ROLE_USER"
+
         user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
-//        validatePassword(user.getPassword());
-        // Шифруем пароль пользователя
+        user.setRegistrationDate(LocalDateTime.now());
+        validatePassword(user.getPassword());
         user.setPassword(encoder.encode(user.getPassword()));
-        // Устанавливаем статус пользователя как активный
         user.setActive(true);
-        // Сохраняем пользователя в базе данных
         User savedUser = userRepository.save(user);
-        // Логируем успешную регистрацию пользователя
         logger.info("Пользователь успешно зарегистрирован с email: " + user.getEmail());
-        // Возвращаем сохраненного пользователя
         return savedUser;
     }
 
+    public boolean emailExists(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
     public void validatePassword(String newPassword) {
-        // Piemēram, līdzīgas validācijas kā 'validatePassword'
         if (newPassword == null || newPassword.isEmpty()) {
             throw new IllegalArgumentException("New password cannot be empty");
         }
@@ -110,14 +111,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        try {
-            if (!userRepository.existsById(id)) {
-                throw new UserIsNotExistException("User with id: " + id + " does not exist");
-            }
-            userRepository.deleteById(id);
-        } catch (UserIsNotExistException e) {
-            throw new RuntimeException(e);
+    public void deleteUser(Authentication authentication) {
+        User currentUser = findByEmail(authentication.getName());
+
+        if (currentUser != null) {
+            userRepository.delete(currentUser);
+        } else {
+            throw new NoSuchElementException("Пользователь не найден");
         }
     }
 

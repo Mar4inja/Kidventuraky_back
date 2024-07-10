@@ -23,13 +23,13 @@ public class GamesController {
     @Operation(summary = "Get All tasks")
     @GetMapping("/getAllTasks")
     public ResponseEntity<List<Games>> getAllTasks() {
-        return ResponseEntity.ok(gamesService.getAllTasks());
+        return ResponseEntity.ok(gamesService.getAllGames());
     }
 
     @Operation(summary = "Get games by ID")
     @GetMapping("/{taskId}")
     public ResponseEntity<Games> getTaskById(@PathVariable(value = "taskId") long id) {
-        Games games = gamesService.getTaskById(id);
+        Games games = gamesService.getGameById(id);
         if (games == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Games not found");
         }
@@ -39,33 +39,33 @@ public class GamesController {
     @Operation(summary = "Find games by difficulty. (Low)-(Medium)-(High)")
     @GetMapping("/difficulty")
     public ResponseEntity<List<Games>> getTasksByDifficulty(@RequestParam String difficulty) {
-        return ResponseEntity.ok( gamesService.searchTaskByDifficulty(difficulty));
+        return ResponseEntity.ok( gamesService.searchGameByDifficulty(difficulty));
     }
 
     @Operation(summary = "Find games by type (practical)-(theoretical)")
-    @GetMapping("/taskType")
-    public ResponseEntity<List<Games>> getTasksByType(@RequestParam String taskType) {
-        return ResponseEntity.ok(gamesService.searchByType(taskType));
+    @GetMapping("/gameType")
+    public ResponseEntity<List<Games>> getGamesByType(@RequestParam String gameType) {
+        return ResponseEntity.ok(gamesService.searchByType(gameType));
     }
 
     @Operation(summary = "Create new games", description = "Create a new games with provided details")
     @PostMapping("/create")
     public ResponseEntity<Games> createTask(@RequestBody Games games) {
-        Games createdGames = gamesService.createTask(games);
+        Games createdGames = gamesService.createGame(games);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdGames);
     }
 
     @Operation(summary = "Update games")
-    @PutMapping("/update/{taskId}")
-    public ResponseEntity<Games> updateTask(@PathVariable(value = "taskId") long id, @RequestBody Games games) {
+    @PutMapping("/update/{gameId}")
+    public ResponseEntity<Games> updateTask(@PathVariable(value = "gameId") long id, @RequestBody Games games) {
         games.setId(id);
-        return ResponseEntity.ok(gamesService.updateTask(games));
+        return ResponseEntity.ok(gamesService.updateGame(games));
     }
 
     @Operation(summary = "Delete games by ID")
-    @DeleteMapping("/delete/{taskId}")
-    public ResponseEntity<String> deleteTask(@PathVariable(value = "taskId") long id) {
-       gamesService.deleteTaskById(id);
+    @DeleteMapping("/delete/{gameId}")
+    public ResponseEntity<String> deleteGame(@PathVariable(value = "gameId") long id) {
+       gamesService.deleteGameById(id);
        return ResponseEntity.ok("Games deleted successfully");
     }
 }

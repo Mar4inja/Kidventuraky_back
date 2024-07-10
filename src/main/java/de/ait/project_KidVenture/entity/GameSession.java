@@ -26,7 +26,7 @@ public class GameSession {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "games_id")
     private Games games;
 
     @Column(name = "startTime")

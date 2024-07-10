@@ -24,17 +24,17 @@ public class Games {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "task_description")
-    private String taskDescription;
+    @Column(name = "games_description")
+    private String gamesDescription;
 
     @Column(name = "difficulty_level")
     private String difficultyLevel;
 
-    @Column(name = "task_type")
-    private String taskType;
+    @Column(name = "games_type")
+    private String gamesType;
 
-    @Column(name = "task_content", columnDefinition = "TEXT")
-    private String taskContent;
+    @Column(name = "games_content", columnDefinition = "TEXT")
+    private String gamesContent;
 
     @Column(name = "correct_answer")
     private String correctAnswer;

@@ -9,11 +9,13 @@ public interface UserService {
 
     User saveUser(User user);
 
+    boolean emailExists(final String email);
+
     List<User> getAll();
 
     User update(Authentication authentication, User updatetedUser);
 
-    void deleteById(Long id);
+    void deleteUser(Authentication authentication);
 
     User getUserInfo(Authentication authentication);
 

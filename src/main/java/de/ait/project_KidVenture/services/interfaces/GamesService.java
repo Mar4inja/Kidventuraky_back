@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface GamesService {
 
-    List<Games> getAllTasks();
+    List<Games> getAllGames();
 
-    Games getTaskById(Long id);
+    Games getGameById(Long id);
 
-    Games createTask(Games games);
+    Games createGame(Games games);
 
-    Games updateTask(Games games);
+    Games updateGame(Games games);
 
-    void deleteTaskById(Long id);
+    void deleteGameById(Long id);
 
-    List<Games> searchTaskByDifficulty(String difficulty);
+    List<Games> searchGameByDifficulty(String difficulty);
 
     List<Games> searchByType(String taskType);
 

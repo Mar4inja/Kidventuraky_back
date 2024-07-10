@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -22,7 +23,6 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @NotNull
     @Schema(description = "user ID", example = "1")
     private Long id;
 
@@ -39,9 +39,9 @@ public class User implements UserDetails {
     private String lastName;
 
     @Column(name = "age", nullable = false)
-    @NotBlank(message = "Required")
-    @Pattern(regexp = "^[0-9]{1,3}$", message = "Age must be a number between 0 and 120")
-    @Schema(description = "Users age", example = "12")
+    @NotNull
+    @Min(0)
+    @Max(120)
     private Integer age;
 
     @Column(name = "gender", nullable = false)
@@ -68,8 +68,7 @@ public class User implements UserDetails {
 
     @Column(name = "registration_date", nullable = false)
     @NotNull(message = "Registration date must not be null")
-    @PastOrPresent(message = "Registration date must be in the past or present")
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
 
     @Column(name = "is_active")
     private boolean isActive;

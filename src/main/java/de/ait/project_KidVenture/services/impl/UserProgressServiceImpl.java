@@ -22,7 +22,7 @@ public class UserProgressServiceImpl implements UserProgressService {
         UserProgress progress = UserProgress.builder()
                 .user(user)
                 .games(games)
-                .completedTasks(0)
+                .completedGames(0)
                 .totalScore(0)
                 .progressPercentage(0.0)
                 .build();
@@ -42,7 +42,7 @@ public class UserProgressServiceImpl implements UserProgressService {
         Optional<UserProgress> existingProgress = userProgressRepository.findById(id);
         if (existingProgress.isPresent()) {
             UserProgress progressToUpdate = existingProgress.get();
-            progressToUpdate.setCompletedTasks(userProgress.getCompletedTasks());
+            progressToUpdate.setCompletedGames(userProgress.getCompletedGames());
             progressToUpdate.setTotalScore(userProgress.getTotalScore());
             progressToUpdate.setProgressPercentage(userProgress.getProgressPercentage());
             return userProgressRepository.save(progressToUpdate);
@@ -63,7 +63,7 @@ public class UserProgressServiceImpl implements UserProgressService {
 
     @Override
     public Optional<UserProgress> getUserProgressForTask(Long userId, Long taskId) {
-        Optional<UserProgress> userProgress = userProgressRepository.findByUserIdAndTaskId(userId, taskId);
+        Optional<UserProgress> userProgress = userProgressRepository.findByUserIdAndGamesId(userId, taskId);
         if (userProgress.isPresent()) {
         }
         return userProgress;
@@ -71,10 +71,10 @@ public class UserProgressServiceImpl implements UserProgressService {
 
     @Override
     public UserProgress updateUserProgressForTask(Long userId, Long taskId, int completedTasks, int totalScore, double progressPercentage) {
-        Optional<UserProgress> userProgress = userProgressRepository.findByUserIdAndTaskId(userId, taskId);
+        Optional<UserProgress> userProgress = userProgressRepository.findByUserIdAndGamesId(userId, taskId);
         if (userProgress.isPresent()) {
             UserProgress progressToUpdate = userProgress.get();
-            progressToUpdate.setCompletedTasks(completedTasks);
+            progressToUpdate.setCompletedGames(completedTasks);
             progressToUpdate.setTotalScore(totalScore);
             progressToUpdate.setProgressPercentage(progressPercentage);
             return userProgressRepository.save(progressToUpdate);
@@ -90,6 +90,6 @@ public class UserProgressServiceImpl implements UserProgressService {
 
     @Override
     public List<UserProgress> getTopProgressForTask(Long taskId, int topN) {
-        return userProgressRepository.findAllByTaskId(taskId);
+        return userProgressRepository.findAllByGamesId(taskId);
     }
 }

@@ -3,7 +3,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="create_table_game" author="martins">
+    <changeSet id="create_table_games" author="martins">
         <!-- Create the 'games' table -->
         <createTable tableName="games">
             <!-- Define columns -->
@@ -13,13 +13,13 @@
             <column name="title" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="task_description" type="TEXT">
+            <column name="game_description" type="TEXT">
                 <constraints nullable="false"/>
             </column>
             <column name="difficulty_level" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="task_type" type="VARCHAR(255)">
+            <column name="game_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="correct_answer" type="VARCHAR(255)">

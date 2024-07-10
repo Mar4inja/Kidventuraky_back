@@ -10,5 +10,5 @@ import java.util.List;
 public interface GameSessionRepository extends JpaRepository<GameSession, Long> {
 
 
-    List<GameSession> findByUserAndTask(User user, Games games);
+    List<GameSession> findByUserAndGames(User user, Games games);
 }

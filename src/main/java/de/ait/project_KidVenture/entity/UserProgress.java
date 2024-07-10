@@ -24,11 +24,11 @@ public class UserProgress {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "task_id", nullable = false)
+    @JoinColumn(name = "games_id", nullable = false)
     private Games games;
 
-    @Column(name = "completed_tasks", nullable = false)
-    private int completedTasks;
+    @Column(name = "completed_games", nullable = false)
+    private int completedGames;
 
     @Column(name = "total_score", nullable = false)
     private int totalScore;

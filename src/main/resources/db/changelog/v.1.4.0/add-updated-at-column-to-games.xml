@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="add_updated_at_column_to_task" author="martins">
+    <changeSet id="add_updated_at_column_to_game" author="martins">
         <addColumn tableName="games">
             <column name="updated_at" type="TIMESTAMP">
                 <constraints nullable="true"/>

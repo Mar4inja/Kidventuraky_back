@@ -17,39 +17,39 @@ public class GamesServiceImpl implements GamesService {
     private final GamesRepository gamesRepository;
 
     @Override
-    public List<Games> getAllTasks() {
+    public List<Games> getAllGames() {
         return gamesRepository.findAll();
     }
 
     @Override
-    public Games getTaskById(Long id) {
+    public Games getGameById(Long id) {
         Optional<Games> task = gamesRepository.findById(id);
         return task.orElse(null);
     }
 
     @Override
-    public Games createTask(Games games) {
+    public Games createGame(Games games) {
         games.setId(null);
 
         if (games.getTitle() == null || games.getTitle().isEmpty()
-                || games.getTaskDescription() == null || games.getTaskDescription().isEmpty()
+                || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
                 || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
-                || games.getTaskType() == null || games.getTaskType().isEmpty()
-                || games.getTaskContent() == null || games.getTaskContent().isEmpty()
+                || games.getGamesType() == null || games.getGamesType().isEmpty()
+                || games.getGamesContent() == null || games.getGamesContent().isEmpty()
                 || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
             throw new IllegalArgumentException("All fields must be filled");
         }
 
-        Games existingGames = gamesRepository.findByTitleAndTaskContent(games.getTitle(), games.getTaskContent());
+        Games existingGames = gamesRepository.findByTitleAndGamesContent(games.getTitle(), games.getGamesContent());
         if (existingGames != null) {
             throw new IllegalArgumentException("Games already exists");
         }
 
         games.setTitle(games.getTitle());
-        games.setTaskDescription(games.getTaskDescription());
+        games.setGamesDescription(games.getGamesDescription());
         games.setDifficultyLevel(games.getDifficultyLevel());
-        games.setTaskType(games.getTaskType());
-        games.setTaskContent(games.getTaskContent());
+        games.setGamesType(games.getGamesType());
+        games.setGamesContent(games.getGamesContent());
         games.setCorrectAnswer(games.getCorrectAnswer());
 
         Games savedGames = gamesRepository.save(games);
@@ -58,7 +58,7 @@ public class GamesServiceImpl implements GamesService {
     }
 
     @Override
-    public Games updateTask(Games games) {
+    public Games updateGame(Games games) {
 
         // Atrodam esošo uzdevumu pēc id
         Games currentGames = gamesRepository.findById(games.getId()).orElseThrow(() -> new IllegalArgumentException("Games not found"));
@@ -72,17 +72,17 @@ public class GamesServiceImpl implements GamesService {
             if (games.getTitle() != null) {
                 existingGames.setTitle(games.getTitle());
             }
-            if (games.getTaskDescription() != null) {
-                existingGames.setTaskDescription(games.getTaskDescription());
+            if (games.getGamesDescription() != null) {
+                existingGames.setGamesDescription(games.getGamesDescription());
             }
             if (games.getDifficultyLevel() != null) {
                 existingGames.setDifficultyLevel(games.getDifficultyLevel());
             }
-            if (games.getTaskType() != null) {
-                existingGames.setTaskType(games.getTaskType());
+            if (games.getGamesType() != null) {
+                existingGames.setGamesType(games.getGamesType());
             }
-            if (games.getTaskContent() != null) {
-                existingGames.setTaskContent(games.getTaskContent());
+            if (games.getGamesContent() != null) {
+                existingGames.setGamesContent(games.getGamesContent());
             }
             if (games.getCorrectAnswer() != null) {
                 existingGames.setCorrectAnswer(games.getCorrectAnswer());
@@ -102,7 +102,7 @@ public class GamesServiceImpl implements GamesService {
     }
 
     @Override
-    public void deleteTaskById(Long id) {
+    public void deleteGameById(Long id) {
         if (gamesRepository.findById(id) == null) {
             throw new IllegalArgumentException("Games not found");
         }
@@ -110,7 +110,7 @@ public class GamesServiceImpl implements GamesService {
     }
 
     @Override
-    public List<Games> searchTaskByDifficulty(String difficulty) {
+    public List<Games> searchGameByDifficulty(String difficulty) {
         return gamesRepository.findAll().stream()
                 .filter(task -> task.getDifficultyLevel().equalsIgnoreCase(difficulty))
                 .collect(Collectors.toList());
@@ -119,7 +119,7 @@ public class GamesServiceImpl implements GamesService {
     @Override
     public List<Games> searchByType(String taskType) {
         return gamesRepository.findAll().stream()
-                .filter(task -> task.getTaskType().equals(taskType))
+                .filter(task -> task.getGamesType().equals(taskType))
                 .collect(Collectors.toList());
     }
 }
