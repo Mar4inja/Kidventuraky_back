@@ -36,16 +36,22 @@ public class GamesController {
         return ResponseEntity.ok(games);
     }
 
-    @Operation(summary = "Find games by difficulty. (Low)-(Medium)-(High)")
+    @Operation(summary = "Filter games by difficulty. (Easy)-(Medium)-(Hard)")
     @GetMapping("/difficulty")
-    public ResponseEntity<List<Games>> getTasksByDifficulty(@RequestParam String difficulty) {
-        return ResponseEntity.ok( gamesService.searchGameByDifficulty(difficulty));
+    public ResponseEntity<List<Games>> filterGamesByDifficulty(@RequestParam String difficulty) {
+        return ResponseEntity.ok( gamesService.filterGameByDifficulty(difficulty));
     }
 
-    @Operation(summary = "Find games by type (practical)-(theoretical)")
+    @Operation(summary = "Filter games by type (practical)-(theoretical)")
     @GetMapping("/gameType")
     public ResponseEntity<List<Games>> getGamesByType(@RequestParam String gameType) {
-        return ResponseEntity.ok(gamesService.searchByType(gameType));
+        return ResponseEntity.ok(gamesService.filterGamesByType(gameType));
+    }
+
+    @Operation(summary = "Filter games by Age-Group - (5 - 8 years)")
+    @GetMapping("/ageGroup")
+    public ResponseEntity<List> filterGamesByAgeGroup(@RequestParam String ageGroup) {
+        return ResponseEntity.ok(gamesService.filterGamesByAgeGroup(ageGroup));
     }
 
     @Operation(summary = "Create new games", description = "Create a new games with provided details")

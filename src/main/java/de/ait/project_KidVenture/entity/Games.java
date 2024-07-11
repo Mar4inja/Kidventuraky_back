@@ -33,15 +33,13 @@ public class Games {
     @Column(name = "games_type")
     private String gamesType;
 
+    @Column(name = "age_group")
+    private String ageGroup;
+
     @Column(name = "games_content", columnDefinition = "TEXT")
     private String gamesContent;
 
     @Column(name = "correct_answer")
     private String correctAnswer;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
 }

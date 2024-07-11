@@ -16,9 +16,8 @@ public interface GamesService {
 
     void deleteGameById(Long id);
 
-    List<Games> searchGameByDifficulty(String difficulty);
+    List<Games> gameFilter(String ageGroup, String difficultyLevel, String gameType);
 
-    List<Games> searchByType(String taskType);
 
 
 }

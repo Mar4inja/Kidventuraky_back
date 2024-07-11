@@ -87,13 +87,6 @@ public class GamesServiceImpl implements GamesService {
             if (games.getCorrectAnswer() != null) {
                 existingGames.setCorrectAnswer(games.getCorrectAnswer());
             }
-            // Atjauninām laikus tikai tad, ja tie nav null
-            if (games.getCreatedAt() != null) {
-                existingGames.setCreatedAt(games.getCreatedAt());
-            }
-            if (games.getUpdatedAt() != null) {
-                existingGames.setUpdatedAt(games.getUpdatedAt());
-            }
             // Saglabājam un atgriežam atjaunināto uzdevumu
             return gamesRepository.save(existingGames);
         } else {
@@ -109,18 +102,14 @@ public class GamesServiceImpl implements GamesService {
         gamesRepository.deleteById(id);
     }
 
-    @Override
-    public List<Games> searchGameByDifficulty(String difficulty) {
+    public List<Games> gameFilter(String ageGroup, String difficultyLevel, String gamesType) {
         return gamesRepository.findAll().stream()
-                .filter(task -> task.getDifficultyLevel().equalsIgnoreCase(difficulty))
+                .filter(games -> (ageGroup == null || games.getAgeGroup().equalsIgnoreCase(ageGroup)))
+                .filter(games -> (difficultyLevel == null || games.getDifficultyLevel().equalsIgnoreCase(difficultyLevel)))
+                .filter(games -> (gamesType == null || games.getGamesType().equalsIgnoreCase(gamesType)))
                 .collect(Collectors.toList());
+
     }
 
-    @Override
-    public List<Games> searchByType(String taskType) {
-        return gamesRepository.findAll().stream()
-                .filter(task -> task.getGamesType().equals(taskType))
-                .collect(Collectors.toList());
-    }
 }
 
