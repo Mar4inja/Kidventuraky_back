@@ -13,22 +13,22 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/api/games")
 @RequiredArgsConstructor
 public class GamesController {
 
     private final GamesService gamesService;
     private final RestTemplateBuilder restTemplateBuilder;
 
-    @Operation(summary = "Get All tasks")
-    @GetMapping("/getAllTasks")
-    public ResponseEntity<List<Games>> getAllTasks() {
+    @Operation(summary = "Get All games")
+    @GetMapping("/getAllGames")
+    public ResponseEntity<List<Games>> getAllGames() {
         return ResponseEntity.ok(gamesService.getAllGames());
     }
 
     @Operation(summary = "Get games by ID")
-    @GetMapping("/{taskId}")
-    public ResponseEntity<Games> getTaskById(@PathVariable(value = "taskId") long id) {
+    @GetMapping("/{gameId}")
+    public ResponseEntity<Games> getGameById(@PathVariable(value = "gameId") long id) {
         Games games = gamesService.getGameById(id);
         if (games == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Games not found");
@@ -36,23 +36,12 @@ public class GamesController {
         return ResponseEntity.ok(games);
     }
 
-    @Operation(summary = "Filter games by difficulty. (Easy)-(Medium)-(Hard)")
-    @GetMapping("/difficulty")
-    public ResponseEntity<List<Games>> filterGamesByDifficulty(@RequestParam String difficulty) {
-        return ResponseEntity.ok( gamesService.filterGameByDifficulty(difficulty));
+    @Operation(summary = "Filter games by ageGroup, Difficulty, type")
+    @GetMapping("/filter")
+    public ResponseEntity<List<Games>> filterGamesByDifficulty(@RequestParam String ageGroup, String difficulty, String gameType) {
+        return ResponseEntity.ok( gamesService.gameFilter(ageGroup, difficulty, gameType));
     }
 
-    @Operation(summary = "Filter games by type (practical)-(theoretical)")
-    @GetMapping("/gameType")
-    public ResponseEntity<List<Games>> getGamesByType(@RequestParam String gameType) {
-        return ResponseEntity.ok(gamesService.filterGamesByType(gameType));
-    }
-
-    @Operation(summary = "Filter games by Age-Group - (5 - 8 years)")
-    @GetMapping("/ageGroup")
-    public ResponseEntity<List> filterGamesByAgeGroup(@RequestParam String ageGroup) {
-        return ResponseEntity.ok(gamesService.filterGamesByAgeGroup(ageGroup));
-    }
 
     @Operation(summary = "Create new games", description = "Create a new games with provided details")
     @PostMapping("/create")

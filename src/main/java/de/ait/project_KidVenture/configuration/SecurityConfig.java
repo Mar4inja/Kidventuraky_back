@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/users/register", "/api/users/login", "/api/users/access", "/api/users/logout").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/games/create").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/users/auth/me").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/games/filter").authenticated()
                         .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(filter, UsernamePasswordAuthenticationFilter.class)
