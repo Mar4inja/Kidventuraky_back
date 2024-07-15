@@ -2,10 +2,15 @@ package de.ait.project_KidVenture.services.impl;
 
 import de.ait.project_KidVenture.entity.Games;
 import de.ait.project_KidVenture.repository.GamesRepository;
+import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.interfaces.GamesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +20,7 @@ import java.util.stream.Collectors;
 public class GamesServiceImpl implements GamesService {
 
     private final GamesRepository gamesRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<Games> getAllGames() {
@@ -29,16 +35,25 @@ public class GamesServiceImpl implements GamesService {
 
     @Override
     public Games createGame(Games games) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        boolean isAdmin = authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+
+        if (!isAdmin) {
+            throw new SecurityException("Only admins can add games");
+        }
+
         games.setId(null);
 
-        if (games.getTitle() == null || games.getTitle().isEmpty()
-                || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
-                || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
-                || games.getGamesType() == null || games.getGamesType().isEmpty()
-                || games.getGamesContent() == null || games.getGamesContent().isEmpty()
-                || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
-            throw new IllegalArgumentException("All fields must be filled");
-        }
+            if (games.getTitle() == null || games.getTitle().isEmpty()
+                    || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
+                    || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
+                    || games.getGamesType() == null || games.getGamesType().isEmpty()
+                    || games.getGamesContent() == null || games.getGamesContent().isEmpty()
+                    || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
+                throw new IllegalArgumentException("All fields must be filled");
+            }
 
         Games existingGames = gamesRepository.findByTitleAndGamesContent(games.getTitle(), games.getGamesContent());
         if (existingGames != null) {

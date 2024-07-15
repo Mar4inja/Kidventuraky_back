@@ -6,5 +6,291 @@
 
     <changeSet id="add_games" author="martins">
 
+        <!-- Age Group: 4 – 5 years -->
+
+        <!-- Fun -->
+        <insert tableName="games">
+            <column name="title" value="Easy Fun Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A simple and fun geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What is the capital of Italy?"/>
+            <column name="correct_answer" value="Rome"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Fun Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A medium difficulty fun geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What continent is Canada in?"/>
+            <column name="correct_answer" value="North America"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Fun Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A challenging fun geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What is the largest ocean in the world?"/>
+            <column name="correct_answer" value="Pacific Ocean"/>
+        </insert>
+
+        <!-- Educational -->
+        <insert tableName="games">
+            <column name="title" value="Easy Educational Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="An easy educational geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What is the capital of Australia?"/>
+            <column name="correct_answer" value="Canberra"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Educational Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A medium difficulty educational geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: Which country is known as the Land of the Rising Sun?"/>
+            <column name="correct_answer" value="Japan"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Educational Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A hard educational geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What is the smallest country in the world?"/>
+            <column name="correct_answer" value="Vatican City"/>
+        </insert>
+
+        <!-- Theoretical -->
+        <insert tableName="games">
+            <column name="title" value="Easy Theoretical Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="An easy theoretical geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What are the seven continents of the world?"/>
+            <column name="correct_answer" value="Africa, Antarctica, Asia, Europe, North America, Australia, South America"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Theoretical Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A medium difficulty theoretical geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: Name the five largest countries by land area."/>
+            <column name="correct_answer" value="Russia, Canada, USA, China, Brazil"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Theoretical Geography Quiz for Kids (4–5 years)"/>
+            <column name="games_description" value="A hard theoretical geography quiz for kids aged 4 to 5 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="4–5 years"/>
+            <column name="games_content" value="Question: What is the longest river in the world?"/>
+            <column name="correct_answer" value="Nile"/>
+        </insert>
+
+        <!-- Age Group: 5 – 6 years -->
+
+        <!-- Fun -->
+        <insert tableName="games">
+            <column name="title" value="Easy Fun Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="An easy and fun geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What is the capital of England?"/>
+            <column name="correct_answer" value="London"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Fun Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A medium difficulty fun geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What continent is Egypt in?"/>
+            <column name="correct_answer" value="Africa"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Fun Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A challenging fun geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What is the largest lake in Africa?"/>
+            <column name="correct_answer" value="Lake Victoria"/>
+        </insert>
+
+        <!-- Educational -->
+        <insert tableName="games">
+            <column name="title" value="Easy Educational Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="An easy educational geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What is the capital of Japan?"/>
+            <column name="correct_answer" value="Tokyo"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Educational Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A medium difficulty educational geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: Which country is famous for the Great Wall?"/>
+            <column name="correct_answer" value="China"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Educational Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A hard educational geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What is the capital of South Africa?"/>
+            <column name="correct_answer" value="Pretoria"/>
+        </insert>
+
+        <!-- Theoretical -->
+        <insert tableName="games">
+            <column name="title" value="Easy Theoretical Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="An easy theoretical geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What are the four main directions on a compass?"/>
+            <column name="correct_answer" value="North, South, East, West"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Theoretical Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A medium difficulty theoretical geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: Name the two largest continents by area."/>
+            <column name="correct_answer" value="Asia, Africa"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Theoretical Geography Quiz for Kids (5–6 years)"/>
+            <column name="games_description" value="A hard theoretical geography quiz for kids aged 5 to 6 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="5–6 years"/>
+            <column name="games_content" value="Question: What is the second longest river in the world?"/>
+            <column name="correct_answer" value="Amazon"/>
+        </insert>
+
+        <!-- Age Group: 6 – 7 years -->
+
+        <!-- Fun -->
+        <insert tableName="games">
+            <column name="title" value="Easy Fun Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="An easy and fun geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the capital of France?"/>
+            <column name="correct_answer" value="Paris"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Fun Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A medium difficulty fun geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What continent is India in?"/>
+            <column name="correct_answer" value="Asia"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Fun Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A challenging fun geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="fun"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the name of the imaginary line that divides the Earth into northern and southern hemispheres?"/>
+            <column name="correct_answer" value="Equator"/>
+        </insert>
+
+        <!-- Educational -->
+        <insert tableName="games">
+            <column name="title" value="Easy Educational Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="An easy educational geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the capital of Spain?"/>
+            <column name="correct_answer" value="Madrid"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Educational Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A medium difficulty educational geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: Which continent is known as the Land of the Free?"/>
+            <column name="correct_answer" value="North America"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Educational Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A hard educational geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="educational"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the name of the line of latitude that is closest to the South Pole?"/>
+            <column name="correct_answer" value="Antarctic Circle"/>
+        </insert>
+
+        <!-- Theoretical -->
+        <insert tableName="games">
+            <column name="title" value="Easy Theoretical Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="An easy theoretical geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="easy"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the name of the line that divides the Earth into the Eastern and Western Hemispheres?"/>
+            <column name="correct_answer" value="Prime Meridian"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Medium Theoretical Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A medium difficulty theoretical geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="medium"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What are the two main hemispheres of the Earth?"/>
+            <column name="correct_answer" value="Northern and Southern Hemispheres"/>
+        </insert>
+
+        <insert tableName="games">
+            <column name="title" value="Hard Theoretical Geography Quiz for Kids (6–7 years)"/>
+            <column name="games_description" value="A hard theoretical geography quiz for kids aged 6 to 7 years."/>
+            <column name="difficulty_level" value="hard"/>
+            <column name="games_type" value="theoretical"/>
+            <column name="age_group" value="6–7 years"/>
+            <column name="games_content" value="Question: What is the capital city of Canada?"/>
+            <column name="correct_answer" value="Ottawa"/>
+        </insert>
+
     </changeSet>
+
 </databaseChangeLog>
