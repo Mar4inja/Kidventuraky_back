@@ -108,7 +108,6 @@ public class GamesServiceImpl implements GamesService {
                 .filter(games -> (difficultyLevel == null || games.getDifficultyLevel().equalsIgnoreCase(difficultyLevel)))
                 .filter(games -> (gamesType == null || games.getGamesType().equalsIgnoreCase(gamesType)))
                 .collect(Collectors.toList());
-
     }
 
 }
