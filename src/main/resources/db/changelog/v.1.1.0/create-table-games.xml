@@ -13,19 +13,22 @@
             <column name="title" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="game_description" type="TEXT">
+            <column name="games_description" type="TEXT">
                 <constraints nullable="false"/>
             </column>
             <column name="difficulty_level" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="game_type" type="VARCHAR(255)">
+            <column name="games_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="age_group" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="correct_answer" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="games_content" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

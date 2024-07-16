@@ -5,11 +5,14 @@ import de.ait.project_KidVenture.repository.GamesRepository;
 import de.ait.project_KidVenture.repository.UserRepository;
 import de.ait.project_KidVenture.services.interfaces.GamesService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +24,7 @@ public class GamesServiceImpl implements GamesService {
 
     private final GamesRepository gamesRepository;
     private final UserRepository userRepository;
+    private static final Logger logger = LoggerFactory.getLogger(GamesServiceImpl.class);
 
     @Override
     public List<Games> getAllGames() {
@@ -46,14 +50,14 @@ public class GamesServiceImpl implements GamesService {
 
         games.setId(null);
 
-            if (games.getTitle() == null || games.getTitle().isEmpty()
-                    || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
-                    || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
-                    || games.getGamesType() == null || games.getGamesType().isEmpty()
-                    || games.getGamesContent() == null || games.getGamesContent().isEmpty()
-                    || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
-                throw new IllegalArgumentException("All fields must be filled");
-            }
+        if (games.getTitle() == null || games.getTitle().isEmpty()
+                || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
+                || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
+                || games.getGamesType() == null || games.getGamesType().isEmpty()
+                || games.getGamesContent() == null || games.getGamesContent().isEmpty()
+                || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
+            throw new IllegalArgumentException("All fields must be filled");
+        }
 
         Games existingGames = gamesRepository.findByTitleAndGamesContent(games.getTitle(), games.getGamesContent());
         if (existingGames != null) {
@@ -117,13 +121,23 @@ public class GamesServiceImpl implements GamesService {
         gamesRepository.deleteById(id);
     }
 
-    public List<Games> gameFilter(String ageGroup, String difficultyLevel, String gamesType) {
+    public List<Games> gameFilterByAGeGroup(String ageGroup) {
         return gamesRepository.findAll().stream()
-                .filter(games -> (ageGroup == null || games.getAgeGroup().equalsIgnoreCase(ageGroup)))
-                .filter(games -> (difficultyLevel == null || games.getDifficultyLevel().equalsIgnoreCase(difficultyLevel)))
-                .filter(games -> (gamesType == null || games.getGamesType().equalsIgnoreCase(gamesType)))
+                .filter(games -> ageGroup == null || games.getAgeGroup().equalsIgnoreCase(ageGroup))
                 .collect(Collectors.toList());
     }
 
-}
+    @Override
+    public List<Games> gameFilterByDifficultyLevel(String difficultyLevel) {
+        return gamesRepository.findAll().stream()
+                .filter(games -> games.getDifficultyLevel() == null || games.getDifficultyLevel().equalsIgnoreCase(difficultyLevel))
+                .collect(Collectors.toList());
+    }
 
+    @Override
+    public List<Games> gameFilterByGameType(String gameType) {
+        return gamesRepository.findAll().stream()
+                .filter(games -> games.getGamesType() == null || games.getGamesType().equalsIgnoreCase(gameType))
+                .collect(Collectors.toList());
+    }
+}

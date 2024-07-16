@@ -42,4 +42,9 @@ public class Games {
     @Column(name = "correct_answer")
     private String correctAnswer;
 
+    public Games(String ageGroup, String difficultyLevel, String gamesType) {
+        this.ageGroup = ageGroup;
+        this.difficultyLevel = difficultyLevel;
+        this.gamesType = gamesType;
+    }
 }

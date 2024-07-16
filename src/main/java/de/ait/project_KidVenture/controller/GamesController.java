@@ -36,12 +36,23 @@ public class GamesController {
         return ResponseEntity.ok(games);
     }
 
-    @Operation(summary = "Filter games by ageGroup, Difficulty, type")
-    @GetMapping("/filter")
-    public ResponseEntity<List<Games>> filterGamesByDifficulty(@RequestParam String ageGroup, String difficulty, String gameType) {
-        return ResponseEntity.ok( gamesService.gameFilter(ageGroup, difficulty, gameType));
+    @GetMapping("/filter/ageGroup")
+    public ResponseEntity<List<Games>> filterGamesByAgeGroup(@RequestParam String ageGroup) {
+        List<Games> filteredGames = gamesService.gameFilterByAGeGroup(ageGroup);
+        return ResponseEntity.ok(filteredGames);
     }
 
+    @GetMapping("/filter/difficultyLevel")
+    public ResponseEntity<List<Games>> filterGamesByDifficultyLevel(@RequestParam String difficultyLevel) {
+        List<Games> filteredGames = gamesService.gameFilterByDifficultyLevel(difficultyLevel);
+        return ResponseEntity.ok(filteredGames);
+    }
+
+    @GetMapping("/filter/gameType")
+    public ResponseEntity<List<Games>> filterGamesByGameType(@RequestParam String gameType) {
+        List<Games> filteredGames = gamesService.gameFilterByGameType(gameType);
+        return ResponseEntity.ok(filteredGames);
+    }
 
     @Operation(summary = "Create new games", description = "Create a new games with provided details")
     @PostMapping("/create")
@@ -60,7 +71,7 @@ public class GamesController {
     @Operation(summary = "Delete games by ID")
     @DeleteMapping("/delete/{gameId}")
     public ResponseEntity<String> deleteGame(@PathVariable(value = "gameId") long id) {
-       gamesService.deleteGameById(id);
-       return ResponseEntity.ok("Games deleted successfully");
+        gamesService.deleteGameById(id);
+        return ResponseEntity.ok("Games deleted successfully");
     }
 }

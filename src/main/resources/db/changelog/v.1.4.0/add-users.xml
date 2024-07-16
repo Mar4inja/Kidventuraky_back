@@ -9,8 +9,10 @@
             <column name="first_name" value="Martins"/>
             <column name="last_name" value="Groza"/>
             <column name="age" valueNumeric="35"/>
+            <column name="gender" value="male"/>
             <column name="email" value="martins@gmail.com"/>
             <column name="password" value="Martins35#"/>
+            <column name="is_active" valueBoolean="true"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

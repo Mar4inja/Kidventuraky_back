@@ -82,6 +82,7 @@ public class User implements UserDetails {
     @Max(value = 100, message = "Score must be at most 100")
     private int score;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
