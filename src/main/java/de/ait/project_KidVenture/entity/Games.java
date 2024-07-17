@@ -21,6 +21,8 @@ public class Games {
     @Column(name = "id")
     private Long id;
 
+    //TODO category add
+
     @Column(name = "title")
     private String title;
 

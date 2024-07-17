@@ -1,6 +1,7 @@
 package de.ait.project_KidVenture.security.sec_controller;
+
 import de.ait.project_KidVenture.entity.User;
-import de.ait.project_KidVenture.repository.UserRepository;
+import de.ait.project_KidVenture.security.sec_dto.ErrorResponse;
 import de.ait.project_KidVenture.security.sec_dto.RefreshRequestDto;
 import de.ait.project_KidVenture.security.sec_dto.TokenResponseDto;
 import de.ait.project_KidVenture.security.sec_service.AuthService;
@@ -19,25 +20,36 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService service;
-    private final UserRepository userRepo;
 
-    public AuthController(AuthService service, UserRepository userRepo) {
+    public AuthController(AuthService service) {
         this.service = service;
-        this.userRepo = userRepo;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) throws AuthException {
+    public ResponseEntity<Object> login(@RequestBody User user, HttpServletResponse response) {
+        try {
+            TokenResponseDto tokenDto = service.login(user);
 
-        TokenResponseDto tokenDto = service.login(user);
+            Cookie accessTokenCookie = new Cookie("Access-Token", tokenDto.getAccessToken());
+            accessTokenCookie.setPath("/");
+            accessTokenCookie.setHttpOnly(true);
+            response.addCookie(accessTokenCookie);
 
-        Cookie accessTokenCookie = new Cookie("Access-Token", tokenDto.getAccessToken());
-        accessTokenCookie.setPath("/");
-        accessTokenCookie.setHttpOnly(true);
-        response.addCookie(accessTokenCookie);
+            return ResponseEntity.ok(tokenDto);
 
-        return ResponseEntity.ok(tokenDto);
-
+        } catch (AuthException e) {
+            if (e.getMessage().equals("User not found")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("Email is incorrect."));  // 401: "Email is incorrect."
+            } else if (e.getMessage().equals("E-mail confirmation was not completed")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("Email confirmation was not completed."));  // 401: "Email confirmation was not completed."
+            } else if (e.getMessage().equals("Password is incorrect")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse("Password is incorrect."));  // 401: "Password is incorrect."
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse("Server error, please try again later."));  // 500: "Server error, please try again later."
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse("Server error, please try again later."));  // 500: "Server error, please try again later."
+        }
     }
 
     @PostMapping("/access")

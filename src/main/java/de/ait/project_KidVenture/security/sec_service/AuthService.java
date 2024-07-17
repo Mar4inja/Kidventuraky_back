@@ -41,13 +41,13 @@ public class AuthService {
 
             if (foundUser == null) {
                 logger.warn("User not found with email: " + username);
-                throw new AuthException("User not found");
+                throw new AuthException("User not found");  // Šeit mēs varam uztvert šo kļūdu klienta pusē kā **401**
             }
 
-            if (!isRegistrationConfirmed(foundUser)) {
-                logger.warn("E-mail confirmation not completed for user: " + username);
-                throw new AuthException("E-mail confirmation was not completed");
-            }
+//            if (!isRegistrationConfirmed(foundUser)) {
+//                logger.warn("E-mail confirmation not completed for user: " + username);
+//                throw new AuthException("E-mail confirmation was not completed");  // Šeit mēs varam uztvert šo kļūdu klienta pusē kā **401**
+//            }
 
             if (encoder.matches(inboundUser.getPassword(), foundUser.getPassword())) {
                 logger.info("Password matches for user: " + username);
@@ -58,13 +58,13 @@ public class AuthService {
                 return new TokenResponseDto(accessToken, refreshToken, foundUser);
             } else {
                 logger.warn("Incorrect password for user: " + username);
-                throw new AuthException("Password is incorrect");
+                throw new AuthException("Password is incorrect");  // Šeit mēs varam uztvert šo kļūdu klienta pusē kā **401**
             }
         } catch (AuthException e) {
-            throw e; // Прокидываем исключение дальше
+            throw e;  // **401** kļūda tiks iestūrta uz `login` metodi kontrolierī
         } catch (Exception e) {
             logger.error("Unexpected error during login: {}", e.getMessage());
-            throw new AuthException("Unexpected error during login");
+            throw new AuthException("Unexpected error during login");  // **500** kļūda, ja notiek neparedzēta kļūda
         }
     }
 

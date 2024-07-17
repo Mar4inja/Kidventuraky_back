@@ -140,4 +140,17 @@ public class GamesServiceImpl implements GamesService {
                 .filter(games -> games.getGamesType() == null || games.getGamesType().equalsIgnoreCase(gameType))
                 .collect(Collectors.toList());
     }
-}
+    @Override
+    public List<Games> getFilteredGames(String category, Integer age) {
+        if (category != null && age != null) {
+            return gamesRepository.findByCategoryAndAge(category, age);
+        } else if (category != null) {
+            return gamesRepository.findByCategory(category);
+        } else if (age != null) {
+            return gamesRepository.findByAge(age);
+        } else {
+            return gamesRepository.findAll();
+        }
+    }
+    //TODO Fix all with ageGroup and resolve category issue
+ }

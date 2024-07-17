@@ -74,4 +74,15 @@ public class GamesController {
         gamesService.deleteGameById(id);
         return ResponseEntity.ok("Games deleted successfully");
     }
+
+    @Operation(summary = "Get filtered games by category and ageGroup")
+    @GetMapping("/filteredGames")
+    public ResponseEntity<List<Games>> getFilteredGames(
+            @RequestParam(value = "category", required = false) String category,
+            @RequestParam(value = "ageGroup", required = false) Integer age) {
+//TODO fix with ageGroup
+        List<Games> filteredGames = gamesService.getFilteredGames(category, age);
+        return ResponseEntity.ok(filteredGames);
+    }
 }
+
