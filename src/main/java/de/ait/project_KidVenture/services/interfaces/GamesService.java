@@ -22,5 +22,5 @@ public interface GamesService {
 
     List<Games> gameFilterByGameType(String gameType);
 
-    List<Games> getFilteredGames(String category, Integer age);
+//    List<Games> getFilteredGames(String category, Integer age);
 }
