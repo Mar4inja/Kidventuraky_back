@@ -113,13 +113,6 @@ public class GamesServiceImpl implements GamesService {
         }
     }
 
-    @Override
-    public void deleteGameById(Long id) {
-        if (gamesRepository.findById(id) == null) {
-            throw new IllegalArgumentException("Games not found");
-        }
-        gamesRepository.deleteById(id);
-    }
 
     public List<Games> gameFilterByAGeGroup(String ageGroup) {
         return gamesRepository.findAll().stream()
@@ -140,17 +133,19 @@ public class GamesServiceImpl implements GamesService {
                 .filter(games -> games.getGamesType() == null || games.getGamesType().equalsIgnoreCase(gameType))
                 .collect(Collectors.toList());
     }
-//    @Override
-//    public List<Games> getFilteredGames(String category, Integer age) {
-//        if (category != null && age != null) {
-//            return gamesRepository.findByCategoryAndAge(category, age);
-//        } else if (category != null) {
-//            return gamesRepository.findByCategory(category);
-//        } else if (age != null) {
-//            return gamesRepository.findByAge(age);
-//        } else {
-//            return gamesRepository.findAll();
-//        }
-//    }
-//    //TODO Fix all with ageGroup and resolve category issue
- }
+
+    @Override
+    public List<Games> getFilteredGames(String gameCategory, String ageGroup) {
+        logger.debug("Filtering games with category: {} and age group: {}", gameCategory, ageGroup);
+
+        if (gameCategory != null && ageGroup != null) {
+            return gamesRepository.findByGameCategoryAndAgeGroup(gameCategory, ageGroup);
+        } else if (gameCategory != null) {
+            return gamesRepository.findByGameCategory(gameCategory);
+        } else if (ageGroup != null) {
+            return gamesRepository.findByAgeGroup(ageGroup);
+        } else {
+            return gamesRepository.findAll();
+        }
+    }
+}

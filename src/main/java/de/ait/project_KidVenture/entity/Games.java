@@ -41,6 +41,9 @@ public class Games {
     @Column(name = "games_content", columnDefinition = "TEXT")
     private String gamesContent;
 
+    @Column(name = "game_category")
+    private String gameCategory;
+
     @Column(name = "correct_answer")
     private String correctAnswer;
 

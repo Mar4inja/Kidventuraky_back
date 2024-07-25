@@ -25,6 +25,9 @@
             <column name="age_group" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="game_category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="correct_answer" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>

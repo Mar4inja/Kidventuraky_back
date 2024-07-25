@@ -14,13 +14,11 @@ public interface GamesService {
 
     Games updateGame(Games games);
 
-    void deleteGameById(Long id);
-
     List<Games> gameFilterByAGeGroup(String ageGroup);
 
     List<Games> gameFilterByDifficultyLevel(String difficultyLevel);
 
     List<Games> gameFilterByGameType(String gameType);
 
-//    List<Games> getFilteredGames(String category, Integer age);
+    List<Games> getFilteredGames(String category, String ageGroup);
 }
