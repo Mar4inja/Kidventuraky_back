@@ -117,7 +117,7 @@
             <column name="games_description" value="An easy and fun geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="easy"/>
             <column name="games_type" value="fun"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the capital of England?"/>
             <column name="correct_answer" value="London"/>
@@ -128,7 +128,7 @@
             <column name="games_description" value="A medium difficulty fun geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="medium"/>
             <column name="games_type" value="fun"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What continent is Egypt in?"/>
             <column name="correct_answer" value="Africa"/>
@@ -139,7 +139,7 @@
             <column name="games_description" value="A challenging fun geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="hard"/>
             <column name="games_type" value="fun"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the largest lake in Africa?"/>
             <column name="correct_answer" value="Lake Victoria"/>
@@ -151,7 +151,7 @@
             <column name="games_description" value="An easy educational geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="easy"/>
             <column name="games_type" value="educational"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the capital of Canada?"/>
             <column name="correct_answer" value="Ottawa"/>
@@ -162,7 +162,7 @@
             <column name="games_description" value="A medium difficulty educational geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="medium"/>
             <column name="games_type" value="educational"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the largest country in the world?"/>
             <column name="correct_answer" value="Russia"/>
@@ -173,7 +173,7 @@
             <column name="games_description" value="A hard educational geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="hard"/>
             <column name="games_type" value="educational"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the longest river in South America?"/>
             <column name="correct_answer" value="Amazon"/>
@@ -185,7 +185,7 @@
             <column name="games_description" value="An easy theoretical geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="easy"/>
             <column name="games_type" value="theoretical"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What are the four oceans of the world?"/>
             <column name="correct_answer" value="Pacific, Atlantic, Indian, Arctic"/>
@@ -196,7 +196,7 @@
             <column name="games_description" value="A medium difficulty theoretical geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="medium"/>
             <column name="games_type" value="theoretical"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the smallest ocean in the world?"/>
             <column name="correct_answer" value="Arctic"/>
@@ -207,7 +207,7 @@
             <column name="games_description" value="A hard theoretical geography quiz for kids aged 5 to 6 years."/>
             <column name="difficulty_level" value="hard"/>
             <column name="games_type" value="theoretical"/>
-            <column name="age_group" value="preSchool"/>
+            <column name="age_group" value="firstClass"/>
             <column name="game_category" value="geography"/>
             <column name="games_content" value="Question: What is the highest mountain in the world?"/>
             <column name="correct_answer" value="Mount Everest"/>

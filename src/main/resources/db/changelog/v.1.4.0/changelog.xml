@@ -8,7 +8,7 @@
         <tagDatabase tag="v.1.1.0"/>
     </changeSet>
 
-    <include file="add-users.xml" relativeToChangelogFile="true"/>
+
     <include file="add-created-at-column-to-games.xml" relativeToChangelogFile="true"/>
     <include file="add-updated-at-column-to-games.xml" relativeToChangelogFile="true"/>
     <include file="add-games-content-column-to-games.xml" relativeToChangelogFile="true"/>

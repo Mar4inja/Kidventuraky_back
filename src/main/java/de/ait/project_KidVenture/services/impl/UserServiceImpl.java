@@ -31,15 +31,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         user.setId(null);
-        // Устанавливаем ID в null, чтобы гарантировать создание нового пользователя
-        // Проверяем, что все обязательные поля заполнены
+
         if (user.getFirstName() == null || user.getFirstName().isEmpty() ||
                 user.getLastName() == null || user.getLastName().isEmpty() ||
                 user.getAge() == null || user.getAge() < 0 ||
                 user.getGender() == null || user.getGender().isEmpty() ||
                 user.getEmail() == null || user.getEmail().isEmpty() ||
                 user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Поля имя, фамилия, email и пароль обязательны для заполнения");
+            throw new IllegalArgumentException("Field name, lastname, email and password must not be empty");
         }
 
         // Проверяем, что пользователь с данным email еще не существует
@@ -47,7 +46,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
         }
 
-        user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_USER")));
+        user.setRoles(Collections.singleton(roleRepository.findByTitle("ROLE_ADMIN")));
         user.setRegistrationDate(LocalDateTime.now());
         validatePassword(user.getPassword());
         user.setPassword(encoder.encode(user.getPassword()));

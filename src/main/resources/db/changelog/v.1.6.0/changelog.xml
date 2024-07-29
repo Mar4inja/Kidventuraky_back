@@ -5,7 +5,6 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
 
-    <include file="add-users-roles-relations.xml" relativeToChangelogFile="true"/>
     <include file="add-games.xml" relativeToChangelogFile="true"/>
 
 

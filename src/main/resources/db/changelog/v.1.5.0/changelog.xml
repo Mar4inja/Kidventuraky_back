@@ -12,7 +12,6 @@
     <include file="add-user-id-to-reward-table.xml" relativeToChangelogFile="true"/>
     <include file="add-foreign-key-to-reward-table.xml" relativeToChangelogFile="true"/>
     <include file="add-score-column-to-user.xml" relativeToChangelogFile="true"/>
-    <include file="create-table-image.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>

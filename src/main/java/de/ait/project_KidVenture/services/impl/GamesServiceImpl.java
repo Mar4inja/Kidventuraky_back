@@ -12,11 +12,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -40,13 +38,13 @@ public class GamesServiceImpl implements GamesService {
     @Override
     public Games createGame(Games games) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        boolean isAdmin = authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
-
-        if (!isAdmin) {
-            throw new SecurityException("Only admins can add games");
-        }
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+//        boolean isAdmin = authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+//
+//        if (!isAdmin) {
+//            throw new SecurityException("Only admins can add games");
+//        }
 
         games.setId(null);
 
@@ -54,23 +52,22 @@ public class GamesServiceImpl implements GamesService {
                 || games.getGamesDescription() == null || games.getGamesDescription().isEmpty()
                 || games.getDifficultyLevel() == null || games.getDifficultyLevel().isEmpty()
                 || games.getGamesType() == null || games.getGamesType().isEmpty()
+                || games.getGameCategory() == null || games.getGameCategory().isEmpty()
+                || games.getAgeGroup() == null || games.getAgeGroup().isEmpty()
                 || games.getGamesContent() == null || games.getGamesContent().isEmpty()
                 || games.getCorrectAnswer() == null || games.getCorrectAnswer().isEmpty()) {
             throw new IllegalArgumentException("All fields must be filled");
         }
-
         Games existingGames = gamesRepository.findByTitleAndGamesContent(games.getTitle(), games.getGamesContent());
         if (existingGames != null) {
             throw new IllegalArgumentException("Games already exists");
         }
-
         games.setTitle(games.getTitle());
         games.setGamesDescription(games.getGamesDescription());
         games.setDifficultyLevel(games.getDifficultyLevel());
         games.setGamesType(games.getGamesType());
         games.setGamesContent(games.getGamesContent());
         games.setCorrectAnswer(games.getCorrectAnswer());
-
         Games savedGames = gamesRepository.save(games);
         return savedGames;
 
@@ -79,15 +76,13 @@ public class GamesServiceImpl implements GamesService {
     @Override
     public Games updateGame(Games games) {
 
-        // Atrodam esošo uzdevumu pēc id
         Games currentGames = gamesRepository.findById(games.getId()).orElseThrow(() -> new IllegalArgumentException("Games not found"));
         Long id = currentGames.getId();
-        // Pārbaudām, vai uzdevums eksistē
+
         Optional<Games> taskOptional = gamesRepository.findById(id);
 
         if (taskOptional.isPresent()) {
             Games existingGames = taskOptional.get();
-            // Atjauninām laukus tikai tad, ja tie nav null
             if (games.getTitle() != null) {
                 existingGames.setTitle(games.getTitle());
             }
@@ -106,46 +101,18 @@ public class GamesServiceImpl implements GamesService {
             if (games.getCorrectAnswer() != null) {
                 existingGames.setCorrectAnswer(games.getCorrectAnswer());
             }
-            // Saglabājam un atgriežam atjaunināto uzdevumu
             return gamesRepository.save(existingGames);
         } else {
             throw new IllegalArgumentException("Games not found");
         }
     }
 
-
-    public List<Games> gameFilterByAGeGroup(String ageGroup) {
-        return gamesRepository.findAll().stream()
-                .filter(games -> ageGroup == null || games.getAgeGroup().equalsIgnoreCase(ageGroup))
-                .collect(Collectors.toList());
-    }
-
     @Override
-    public List<Games> gameFilterByDifficultyLevel(String difficultyLevel) {
-        return gamesRepository.findAll().stream()
-                .filter(games -> games.getDifficultyLevel() == null || games.getDifficultyLevel().equalsIgnoreCase(difficultyLevel))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Games> gameFilterByGameType(String gameType) {
-        return gamesRepository.findAll().stream()
-                .filter(games -> games.getGamesType() == null || games.getGamesType().equalsIgnoreCase(gameType))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Games> getFilteredGames(String gameCategory, String ageGroup) {
-        logger.debug("Filtering games with category: {} and age group: {}", gameCategory, ageGroup);
-
-        if (gameCategory != null && ageGroup != null) {
-            return gamesRepository.findByGameCategoryAndAgeGroup(gameCategory, ageGroup);
-        } else if (gameCategory != null) {
-            return gamesRepository.findByGameCategory(gameCategory);
-        } else if (ageGroup != null) {
-            return gamesRepository.findByAgeGroup(ageGroup);
+    public List<Games> showGamesByGameCategoryAndAge(String gameCategory, String ageGroup) {
+        if (gameCategory == null || gameCategory.isEmpty() || ageGroup == null || ageGroup.isEmpty()) {
+            throw new IllegalArgumentException("Game data-base doesn't contain any games");
         } else {
-            return gamesRepository.findAll();
+            return gamesRepository.findByGameCategoryAndAgeGroup(gameCategory, ageGroup);
         }
     }
 }

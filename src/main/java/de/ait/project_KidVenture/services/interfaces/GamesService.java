@@ -14,11 +14,5 @@ public interface GamesService {
 
     Games updateGame(Games games);
 
-    List<Games> gameFilterByAGeGroup(String ageGroup);
-
-    List<Games> gameFilterByDifficultyLevel(String difficultyLevel);
-
-    List<Games> gameFilterByGameType(String gameType);
-
-    List<Games> getFilteredGames(String category, String ageGroup);
+    List<Games> showGamesByGameCategoryAndAge(String gameCategory, String ageGroup);
 }

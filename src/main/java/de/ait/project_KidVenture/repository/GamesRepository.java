@@ -9,10 +9,8 @@ public interface GamesRepository extends JpaRepository<Games, Long> {
 
    Games findByTitleAndGamesContent(String title, String gamesContent);
 
-   List<Games> findByGameCategory(String gameCategory);
-
    List<Games> findByGameCategoryAndAgeGroup(String gameCategory, String ageGroup);
 
-   List<Games> findByAgeGroup(String ageGroup);
+
 
 }

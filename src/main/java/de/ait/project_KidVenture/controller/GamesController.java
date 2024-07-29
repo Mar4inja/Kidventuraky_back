@@ -40,25 +40,6 @@ public class GamesController {
         return ResponseEntity.ok(games);
     }
 
-    @GetMapping("/filter/ageGroup")
-    public ResponseEntity<List<Games>> filterGamesByAgeGroup(@RequestParam String ageGroup) {
-        List<Games> filteredGames = gamesService.gameFilterByAGeGroup(ageGroup);
-        return ResponseEntity.ok(filteredGames);
-    }
-
-
-    @GetMapping("/filter/difficultyLevel")
-    public ResponseEntity<List<Games>> filterGamesByDifficultyLevel(@RequestParam String difficultyLevel) {
-        List<Games> filteredGames = gamesService.gameFilterByDifficultyLevel(difficultyLevel);
-        return ResponseEntity.ok(filteredGames);
-    }
-
-
-    @GetMapping("/findByGameType")
-    public ResponseEntity<List<Games>> findByGameType(@RequestParam String gameType) {
-        List<Games> gamesByType = gamesService.gameFilterByGameType(gameType);
-        return ResponseEntity.ok(gamesByType);
-    }
 
     @Operation(summary = "Create new games", description = "Create a new games with provided details")
     @PostMapping("/create")
@@ -74,15 +55,10 @@ public class GamesController {
         return ResponseEntity.ok(gamesService.updateGame(games));
     }
 
-
-    @PostMapping("/filteredGames")
-    public ResponseEntity<List<Games>> getFilteredGames(@RequestParam String gameCategory, @RequestParam String ageGroup) {
-        // Логика обработки запроса
-        // Пример:
-        List<Games> games = gamesService.getFilteredGames(gameCategory, ageGroup);
-        if (games.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(games);
+    @Operation(summary = "Show Games by Category and Age Group")
+    @GetMapping("/byGameCategoryAndAgeGroup")
+    public ResponseEntity<List<Games>> getGamesByGameCategoryAndAgeGroup(@RequestParam String gameCategory, @RequestParam String ageGroup) {
+        logger.info("Received request with gameCategory: {} and ageGroup: {}", gameCategory, ageGroup);
+        return ResponseEntity.ok(gamesService.showGamesByGameCategoryAndAge(gameCategory, ageGroup));
     }
 }
